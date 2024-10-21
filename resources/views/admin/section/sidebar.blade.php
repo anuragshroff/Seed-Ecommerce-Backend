@@ -124,6 +124,32 @@
             </ul>
         </li>
 
+        <li>
+            <a href="{{route('customerInfo')}}">
+                <div class="parent-icon"><img src="{{asset('assets/static/dashboard.webp')}}" style="width: 30px; height: 30px" />
+                </div>
+                <div class="menu-title">Customer Information</div>
+            </a>
+
+        </li>
+
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><img src="{{asset('assets/static/dashboard.webp')}}" style="width: 30px; height: 30px" />
+                </div>
+                <div class="menu-title">API Setting</div>
+            </a>
+            <ul>
+                <li> <a href="{{route('couriarApi')}}">
+                        <i class='bx bx-radio-circle'></i>
+                        Couriar Api
+                    </a>
+                </li>
+
+
+            </ul>
+        </li>
+
 
 
 

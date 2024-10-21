@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\admin\Apicontroller;
 use App\Http\Controllers\admin\AttributeController;
+use App\Http\Controllers\admin\CustomerInfoController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\InventoryController;
 use App\Http\Controllers\admin\OrderController;
@@ -48,6 +50,12 @@ Route::group(
         Route::get('/stock', [InventoryController::class, 'stock'])->name('stock');
         Route::get('/stock-out-product', [InventoryController::class, 'stockOutProduct'])->name('stockOutProducts');
         Route::get('/upcoming-stock-out-product', [InventoryController::class, 'upcomingStockOut'])->name('upcomingStockOutProducts');
+
+        //Customer Info
+        Route::get('/customer-info', [CustomerInfoController::class, 'customerInfo'])->name('customerInfo');
+
+        //Api manage
+        Route::get('/couriar-api', [Apicontroller::class, 'couriarApi'])->name('couriarApi');
 
     }
 );
