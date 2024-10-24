@@ -55,16 +55,40 @@
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><img src="{{asset('assets/static/dashboard.webp')}}" style="width: 30px; height: 30px" />
                 </div>
+                <div class="menu-title">Template</div>
+            </a>
+            <ul>
+                <li> <a href="{{route('template.index')}}">
+                        <i class='bx bx-radio-circle'></i>
+                        All Template
+                    </a>
+                </li>
+
+                <li> <a href="{{route('template.create')}}">
+                        <i class='bx bx-radio-circle'></i>
+                        Add Template
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+
+
+
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><img src="{{asset('assets/static/dashboard.webp')}}" style="width: 30px; height: 30px" />
+                </div>
                 <div class="menu-title">Attribute</div>
             </a>
             <ul>
-                <li> <a href="{{route('attribute.index')}}">
+                <li> <a href="{{route('attribute')}}">
                         <i class='bx bx-radio-circle'></i>
                         List of Attribute
                     </a>
                 </li>
 
-                <li> <a href="{{route('attribute.create')}}">
+                <li> <a href="{{route('createAttribute')}}">
                         <i class='bx bx-radio-circle'></i>
                         Add Attribute
                     </a>
@@ -115,10 +139,10 @@
                 </li>
 
                 <li> <a href="{{route('upcomingStockOutProducts')}}">
-                    <i class='bx bx-radio-circle'></i>
-                    Upcoming Stock Out Products
-                </a>
-            </li>
+                        <i class='bx bx-radio-circle'></i>
+                        Upcoming Stock Out Products
+                    </a>
+                </li>
 
 
             </ul>
@@ -149,6 +173,31 @@
 
             </ul>
         </li>
+
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><img src="{{asset('assets/static/dashboard.webp')}}" style="width: 30px; height: 30px" />
+                </div>
+                <div class="menu-title">Settings</div>
+            </a>
+            <ul>
+                <li> <a href="{{route('generalSetting')}}">
+                        <i class='bx bx-radio-circle'></i>
+                        General Settings
+                    </a>
+                </li>
+
+               
+
+                <li> <a href="{{route('media')}}">
+                        <i class='bx bx-radio-circle'></i>
+                        Media
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+
 
 
 

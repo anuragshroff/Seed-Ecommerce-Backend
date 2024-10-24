@@ -2,13 +2,16 @@
 
 use App\Http\Controllers\admin\Apicontroller;
 use App\Http\Controllers\admin\AttributeController;
+use App\Http\Controllers\admin\AttributeOptionController;
 use App\Http\Controllers\admin\CustomerInfoController;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\GeneralController;
 use App\Http\Controllers\admin\InventoryController;
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\admin\ReportController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\admin\TemplateController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -17,11 +20,11 @@ Route::get('/', function () {
 
 
 
-Route::middleware('auth')->group(function () {
+/*Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+}); */
 
 require __DIR__.'/auth.php';
 
@@ -36,15 +39,36 @@ Route::group(
 
         //product
         Route::resource('product', ProductController::class);
+        Route::post('/product/toggle-status', [ProductController::class, 'toggleStatus'])->name('product.toggleStatus');
+
+
+        //Template
+        Route::resource('template', TemplateController::class);
+     
 
         //Attribute
-        Route::resource('attribute', AttributeController::class);
-        Route::get('/create/attribute/option', [AttributeController::class, 'createAtributeOption'])->name('createAtributeOption');
-        Route::get('/edit/attribute/option', [AttributeController::class, 'editAttribute'])->name('editAttributeOption');
+
+       Route::get('/attribute', [AttributeController::class, 'attribute'])->name('attribute');
+       Route::get('/create-attribute', [AttributeController::class, 'createAttribute'])->name('createAttribute');
+       Route::post('/attribute-store', [AttributeController::class, 'attributeStore'])->name('attributeStore');
+       Route::get('/edit/attribute/{id}', [AttributeController::class, 'editAttribute'])->name('editAttribute');
+       Route::post('/update/attribute', [AttributeController::class, 'updateAttribute'])->name('updateAttribute');
+       Route::get('/delete/attribute/{id}', [AttributeController::class, 'deleteAttribute'])->name('deleteAttribute');
+    
+
+
+
+       Route::get('/create/attribute/option/{id}', [AttributeOptionController::class, 'createAtributeOption'])->name('createAtributeOption');
+       Route::post('/attribute/option/store', [AttributeOptionController::class, 'storeAtributeOption'])->name('storeAtributeOption');
+       Route::get('/attribute/option/edit/{id}', [AttributeOptionController::class, 'attributeOptionEdit'])->name('attributeOptionEdit');
+       Route::post('/attribute/option/update', [AttributeOptionController::class, 'attributeOptionUpdate'])->name('attributeOptionUpdate');
+       Route::get('/attribute/option/delete/{id}', [AttributeOptionController::class, 'attributeOptionDelete'])->name('attributeOptionDelete');
+     
 
         //Report 
         Route::get('/report', [ReportController::class, 'report'])->name('report');
         Route::get('/sale-report', [ReportController::class, 'saleReport'])->name('saleReport');
+        Route::get('report-filter', [ReportController::class, 'reportFilter'])->name('reportFilter');
 
         //Inventory
         Route::get('/stock', [InventoryController::class, 'stock'])->name('stock');
@@ -56,6 +80,15 @@ Route::group(
 
         //Api manage
         Route::get('/couriar-api', [Apicontroller::class, 'couriarApi'])->name('couriarApi');
+
+         //General Setting
+         Route::get('/general-setting', [GeneralController::class, 'generalSetting'])->name('generalSetting');
+         Route::get('/media', [GeneralController::class, 'media'])->name('media');
+
+         //Profile Setting
+         Route::get('/profile-setting', [ProfileController::class, 'profileSetting'])->name('profileSetting');
+         Route::post('/profile-update', [ProfileController::class, 'profileUpdate'])->name('profileUpdate');
+         Route::post('/password-update', [ProfileController::class, 'passwordUpdate'])->name('passwordUpdate');
 
     }
 );

@@ -15,6 +15,7 @@
     <link href="{{ asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{asset('assets/plugins/notifications/css/lobibox.min.css')}}" />
 
     <!-- loader -->
     <link href="{{ asset('assets/css/pace.min.css') }}" rel="stylesheet" />
@@ -37,7 +38,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/header-colors.css') }}" />
 
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-   
+
 
 
     <title>Rukada - Responsive Bootstrap 5 Admin Template</title>
@@ -61,8 +62,7 @@
         <!--start overlay-->
         <div class="overlay toggle-icon"></div>
         <!--end overlay-->
-        <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i
-                class='bx bxs-up-arrow-alt'></i></a>
+        <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
         <!--End Back To Top Button-->
         @include('admin.section.footer')
 
@@ -95,6 +95,11 @@
     <script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
 
+    <!--notification js -->
+    <script src="{{asset('assets/plugins/notifications/js/lobibox.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/notifications/js/notifications.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/notifications/js/notification-custom-script.js')}}"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
 
@@ -103,17 +108,19 @@
         $(document).ready(function() {
             $('#example').DataTable();
         });
+
     </script>
     <script>
         $(document).ready(function() {
             var table = $('#example2').DataTable({
-                lengthChange: false,
-                buttons: ['copy', 'excel', 'pdf', 'print']
+                lengthChange: false
+                , buttons: ['copy', 'excel', 'pdf', 'print']
             });
 
             table.buttons().container()
                 .appendTo('#example2_wrapper .col-md-6:eq(0)');
         });
+
     </script>
 
 
@@ -126,6 +133,7 @@
                 focus: true // Set focus to editable area after initializing
             });
         });
+
     </script>
 
 
@@ -141,9 +149,32 @@
     <script>
         new PerfectScrollbar('.product-list');
         new PerfectScrollbar('.customers-list');
+
     </script>
 
-@stack('scripts');
+    <script>
+        function success_noti(message) {
+            Lobibox.notify('success', {
+                pauseDelayOnHover: true, 
+                width: 300,
+                size: 'mini',
+                continueDelayOnInactiveTab: false,
+                position: 'top right',
+                icon: 'bx bx-check-circle',
+                backgroundColor: '#28a745 !important',
+                msg: message
+            });
+        }
+
+        @if(session('success'))
+        // Trigger the success notification
+        success_noti("{{ session('success') }}");
+        @endif
+
+    </script>
+
+
+    @stack('scripts');
 
 </body>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Attribute;
 use Illuminate\Http\Request;
 
 class AttributeController extends Controller
@@ -10,67 +11,68 @@ class AttributeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        return view('admin.attribute.index');
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('admin.attribute.create');
-    }
+     public function attribute(){
+        $attributes = Attribute::with('attribute_options')->get();
+        return view('admin.attribute.index', compact('attributes'));
+     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+     public function createAttribute(){
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        $attributes = Attribute::with('attribute_options')->get();
+         return view('admin.attribute.create', compact('attributes'));
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+     public function attributeStore(Request $request){
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
 
+        Attribute::create([
+            'name' => $validated['name'],
+        ]);
 
-    public function createAtributeOption(){
-        return view('admin.attribute.option.create');
+        return redirect('/create-attribute')->with('success', 'Attribute created successfully!');
 
     }
 
-    public function editAttribute(){
-        return view('admin.attribute.option.edit');
+    public function updateAttribute(Request $request){
+
+      
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'attribute_id' => 'required',
+        ]);
+
+        $attribute = Attribute::findOrFail($request->attribute_id);
+
+        $attribute->update($validated);
+
+        return redirect('/create-attribute')->with('success', 'Attribute created successfully!');
+
+    }
+
+    public function deleteAttribute($id){
+
+        $attribute = Attribute::findOrFail($id);
+        $attribute->delete();
+
+
+        return redirect()->route('attribute')->with('success', 'Data deleted successfully!');
+
+    }
+
+   
+
+
+
+    public function editAttribute($attribute_id){
+
+        $attributes = Attribute::where('id', $attribute_id)->with('attribute_options')->first();
+        return view('admin.attribute.option.edit', compact('attribute_id', 'attributes'));
 
     }
 

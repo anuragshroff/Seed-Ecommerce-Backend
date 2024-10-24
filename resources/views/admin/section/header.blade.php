@@ -31,41 +31,7 @@
                                         width="20" alt=""><span
                                         class="ms-2">English</span></a>
                             </li>
-                            <li><a class="dropdown-item d-flex align-items-center py-2"
-                                    href="javascript:;"><img src="assets/images/county/02.png"
-                                        width="20" alt=""><span
-                                        class="ms-2">Catalan</span></a>
-                            </li>
-                            <li><a class="dropdown-item d-flex align-items-center py-2"
-                                    href="javascript:;"><img src="assets/images/county/03.png"
-                                        width="20" alt=""><span
-                                        class="ms-2">French</span></a>
-                            </li>
-                            <li><a class="dropdown-item d-flex align-items-center py-2"
-                                    href="javascript:;"><img src="assets/images/county/04.png"
-                                        width="20" alt=""><span
-                                        class="ms-2">Belize</span></a>
-                            </li>
-                            <li><a class="dropdown-item d-flex align-items-center py-2"
-                                    href="javascript:;"><img src="assets/images/county/05.png"
-                                        width="20" alt=""><span
-                                        class="ms-2">Colombia</span></a>
-                            </li>
-                            <li><a class="dropdown-item d-flex align-items-center py-2"
-                                    href="javascript:;"><img src="assets/images/county/06.png"
-                                        width="20" alt=""><span
-                                        class="ms-2">Spanish</span></a>
-                            </li>
-                            <li><a class="dropdown-item d-flex align-items-center py-2"
-                                    href="javascript:;"><img src="assets/images/county/07.png"
-                                        width="20" alt=""><span
-                                        class="ms-2">Georgian</span></a>
-                            </li>
-                            <li><a class="dropdown-item d-flex align-items-center py-2"
-                                    href="javascript:;"><img src="assets/images/county/08.png"
-                                        width="20" alt=""><span
-                                        class="ms-2">Hindi</span></a>
-                            </li>
+                           
                         </ul>
                     </li>
                     <li class="nav-item dark-mode d-none d-sm-flex">
@@ -93,228 +59,7 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="col">
-                                        <a href="javascript:;">
-                                            <div class="app-box text-center">
-                                                <div class="app-icon">
-                                                    <img src="assets/images/app/behance.png"
-                                                        width="30" alt="">
-                                                </div>
-                                                <div class="app-name">
-                                                    <p class="mb-0 mt-1">Behance</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="javascript:;">
-                                            <div class="app-box text-center">
-                                                <div class="app-icon">
-                                                    <img src="assets/images/app/google-drive.png"
-                                                        width="30" alt="">
-                                                </div>
-                                                <div class="app-name">
-                                                    <p class="mb-0 mt-1">Dribble</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="javascript:;">
-                                            <div class="app-box text-center">
-                                                <div class="app-icon">
-                                                    <img src="assets/images/app/outlook.png"
-                                                        width="30" alt="">
-                                                </div>
-                                                <div class="app-name">
-                                                    <p class="mb-0 mt-1">Outlook</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="javascript:;">
-                                            <div class="app-box text-center">
-                                                <div class="app-icon">
-                                                    <img src="assets/images/app/github.png" width="30"
-                                                        alt="">
-                                                </div>
-                                                <div class="app-name">
-                                                    <p class="mb-0 mt-1">GitHub</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="javascript:;">
-                                            <div class="app-box text-center">
-                                                <div class="app-icon">
-                                                    <img src="assets/images/app/stack-overflow.png"
-                                                        width="30" alt="">
-                                                </div>
-                                                <div class="app-name">
-                                                    <p class="mb-0 mt-1">Stack</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="javascript:;">
-                                            <div class="app-box text-center">
-                                                <div class="app-icon">
-                                                    <img src="assets/images/app/figma.png" width="30"
-                                                        alt="">
-                                                </div>
-                                                <div class="app-name">
-                                                    <p class="mb-0 mt-1">Stack</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="javascript:;">
-                                            <div class="app-box text-center">
-                                                <div class="app-icon">
-                                                    <img src="assets/images/app/twitter.png"
-                                                        width="30" alt="">
-                                                </div>
-                                                <div class="app-name">
-                                                    <p class="mb-0 mt-1">Twitter</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="javascript:;">
-                                            <div class="app-box text-center">
-                                                <div class="app-icon">
-                                                    <img src="assets/images/app/google-calendar.png"
-                                                        width="30" alt="">
-                                                </div>
-                                                <div class="app-name">
-                                                    <p class="mb-0 mt-1">Calendar</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="javascript:;">
-                                            <div class="app-box text-center">
-                                                <div class="app-icon">
-                                                    <img src="assets/images/app/spotify.png"
-                                                        width="30" alt="">
-                                                </div>
-                                                <div class="app-name">
-                                                    <p class="mb-0 mt-1">Spotify</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="javascript:;">
-                                            <div class="app-box text-center">
-                                                <div class="app-icon">
-                                                    <img src="assets/images/app/google-photos.png"
-                                                        width="30" alt="">
-                                                </div>
-                                                <div class="app-name">
-                                                    <p class="mb-0 mt-1">Photos</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="javascript:;">
-                                            <div class="app-box text-center">
-                                                <div class="app-icon">
-                                                    <img src="assets/images/app/pinterest.png"
-                                                        width="30" alt="">
-                                                </div>
-                                                <div class="app-name">
-                                                    <p class="mb-0 mt-1">Photos</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="javascript:;">
-                                            <div class="app-box text-center">
-                                                <div class="app-icon">
-                                                    <img src="assets/images/app/linkedin.png"
-                                                        width="30" alt="">
-                                                </div>
-                                                <div class="app-name">
-                                                    <p class="mb-0 mt-1">linkedin</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="javascript:;">
-                                            <div class="app-box text-center">
-                                                <div class="app-icon">
-                                                    <img src="assets/images/app/dribble.png"
-                                                        width="30" alt="">
-                                                </div>
-                                                <div class="app-name">
-                                                    <p class="mb-0 mt-1">Dribble</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="javascript:;">
-                                            <div class="app-box text-center">
-                                                <div class="app-icon">
-                                                    <img src="assets/images/app/youtube.png"
-                                                        width="30" alt="">
-                                                </div>
-                                                <div class="app-name">
-                                                    <p class="mb-0 mt-1">YouTube</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="javascript:;">
-                                            <div class="app-box text-center">
-                                                <div class="app-icon">
-                                                    <img src="assets/images/app/google.png" width="30"
-                                                        alt="">
-                                                </div>
-                                                <div class="app-name">
-                                                    <p class="mb-0 mt-1">News</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="javascript:;">
-                                            <div class="app-box text-center">
-                                                <div class="app-icon">
-                                                    <img src="assets/images/app/envato.png" width="30"
-                                                        alt="">
-                                                </div>
-                                                <div class="app-name">
-                                                    <p class="mb-0 mt-1">Envato</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="javascript:;">
-                                            <div class="app-box text-center">
-                                                <div class="app-icon">
-                                                    <img src="assets/images/app/safari.png" width="30"
-                                                        alt="">
-                                                </div>
-                                                <div class="app-name">
-                                                    <p class="mb-0 mt-1">Safari</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-
+                                   
                                 </div><!--end row-->
 
                             </div>
@@ -334,6 +79,7 @@
                                 </div>
                             </a>
                             <div class="header-notifications-list">
+
                                 <a class="dropdown-item" href="javascript:;">
                                     <div class="d-flex align-items-center">
                                         <div class="user-online">
@@ -348,112 +94,7 @@
                                         </div>
                                     </div>
                                 </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center">
-                                        <div class="notify bg-light-danger text-danger">dc
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="msg-name">New Orders <span
-                                                    class="msg-time float-end">2 min
-                                                    ago</span></h6>
-                                            <p class="msg-info">You have recived new orders</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center">
-                                        <div class="user-online">
-                                            <img src="assets/images/avatars/avatar-2.png"
-                                                class="msg-avatar" alt="user avatar">
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="msg-name">Althea Cabardo <span
-                                                    class="msg-time float-end">14
-                                                    sec ago</span></h6>
-                                            <p class="msg-info">Many desktop publishing packages</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center">
-                                        <div class="notify bg-light-success text-success">
-                                            <img src="assets/images/app/outlook.png" width="25"
-                                                alt="user avatar">
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="msg-name">Account Created<span
-                                                    class="msg-time float-end">28 min
-                                                    ago</span></h6>
-                                            <p class="msg-info">Successfully created new email</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center">
-                                        <div class="notify bg-light-info text-info">Ss
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="msg-name">New Product Approved <span
-                                                    class="msg-time float-end">2 hrs ago</span></h6>
-                                            <p class="msg-info">Your new product has approved</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center">
-                                        <div class="user-online">
-                                            <img src="assets/images/avatars/avatar-4.png"
-                                                class="msg-avatar" alt="user avatar">
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="msg-name">Katherine Pechon <span
-                                                    class="msg-time float-end">15
-                                                    min ago</span></h6>
-                                            <p class="msg-info">Making this the first true generator</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center">
-                                        <div class="notify bg-light-success text-success"><i
-                                                class='bx bx-check-square'></i>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="msg-name">Your item is shipped <span
-                                                    class="msg-time float-end">5 hrs
-                                                    ago</span></h6>
-                                            <p class="msg-info">Successfully shipped your item</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center">
-                                        <div class="notify bg-light-primary">
-                                            <img src="assets/images/app/github.png" width="25"
-                                                alt="user avatar">
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="msg-name">New 24 authors<span
-                                                    class="msg-time float-end">1 day
-                                                    ago</span></h6>
-                                            <p class="msg-info">24 new authors joined last week</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center">
-                                        <div class="user-online">
-                                            <img src="assets/images/avatars/avatar-8.png"
-                                                class="msg-avatar" alt="user avatar">
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="msg-name">Peter Costanzo <span
-                                                    class="msg-time float-end">6 hrs
-                                                    ago</span></h6>
-                                            <p class="msg-info">It was popularised in the 1960s</p>
-                                        </div>
-                                    </div>
-                                </a>
+                               
                             </div>
                             <a href="javascript:;">
                                 <div class="text-center msg-footer">
@@ -476,6 +117,7 @@
                                 </div>
                             </a>
                             <div class="header-message-list">
+                                
                                 <a class="dropdown-item" href="javascript:;">
                                     <div class="d-flex align-items-center gap-3">
                                         <div class="position-relative">
@@ -495,158 +137,7 @@
                                         </div>
                                     </div>
                                 </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="position-relative">
-                                            <div class="cart-product rounded-circle bg-light">
-                                                <img src="assets/images/products/02.png" class=""
-                                                    alt="product image">
-                                            </div>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="cart-product-title mb-0">Men White T-Shirt</h6>
-                                            <p class="cart-product-price mb-0">1 X $29.00</p>
-                                        </div>
-                                        <div class="">
-                                            <p class="cart-price mb-0">$250</p>
-                                        </div>
-                                        <div class="cart-product-cancel"><i class="bx bx-x"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="position-relative">
-                                            <div class="cart-product rounded-circle bg-light">
-                                                <img src="assets/images/products/03.png" class=""
-                                                    alt="product image">
-                                            </div>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="cart-product-title mb-0">Men White T-Shirt</h6>
-                                            <p class="cart-product-price mb-0">1 X $29.00</p>
-                                        </div>
-                                        <div class="">
-                                            <p class="cart-price mb-0">$250</p>
-                                        </div>
-                                        <div class="cart-product-cancel"><i class="bx bx-x"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="position-relative">
-                                            <div class="cart-product rounded-circle bg-light">
-                                                <img src="assets/images/products/04.png" class=""
-                                                    alt="product image">
-                                            </div>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="cart-product-title mb-0">Men White T-Shirt</h6>
-                                            <p class="cart-product-price mb-0">1 X $29.00</p>
-                                        </div>
-                                        <div class="">
-                                            <p class="cart-price mb-0">$250</p>
-                                        </div>
-                                        <div class="cart-product-cancel"><i class="bx bx-x"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="position-relative">
-                                            <div class="cart-product rounded-circle bg-light">
-                                                <img src="assets/images/products/05.png" class=""
-                                                    alt="product image">
-                                            </div>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="cart-product-title mb-0">Men White T-Shirt</h6>
-                                            <p class="cart-product-price mb-0">1 X $29.00</p>
-                                        </div>
-                                        <div class="">
-                                            <p class="cart-price mb-0">$250</p>
-                                        </div>
-                                        <div class="cart-product-cancel"><i class="bx bx-x"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="position-relative">
-                                            <div class="cart-product rounded-circle bg-light">
-                                                <img src="assets/images/products/06.png" class=""
-                                                    alt="product image">
-                                            </div>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="cart-product-title mb-0">Men White T-Shirt</h6>
-                                            <p class="cart-product-price mb-0">1 X $29.00</p>
-                                        </div>
-                                        <div class="">
-                                            <p class="cart-price mb-0">$250</p>
-                                        </div>
-                                        <div class="cart-product-cancel"><i class="bx bx-x"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="position-relative">
-                                            <div class="cart-product rounded-circle bg-light">
-                                                <img src="assets/images/products/07.png" class=""
-                                                    alt="product image">
-                                            </div>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="cart-product-title mb-0">Men White T-Shirt</h6>
-                                            <p class="cart-product-price mb-0">1 X $29.00</p>
-                                        </div>
-                                        <div class="">
-                                            <p class="cart-price mb-0">$250</p>
-                                        </div>
-                                        <div class="cart-product-cancel"><i class="bx bx-x"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="position-relative">
-                                            <div class="cart-product rounded-circle bg-light">
-                                                <img src="assets/images/products/08.png" class=""
-                                                    alt="product image">
-                                            </div>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="cart-product-title mb-0">Men White T-Shirt</h6>
-                                            <p class="cart-product-price mb-0">1 X $29.00</p>
-                                        </div>
-                                        <div class="">
-                                            <p class="cart-price mb-0">$250</p>
-                                        </div>
-                                        <div class="cart-product-cancel"><i class="bx bx-x"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="position-relative">
-                                            <div class="cart-product rounded-circle bg-light">
-                                                <img src="assets/images/products/09.png" class=""
-                                                    alt="product image">
-                                            </div>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="cart-product-title mb-0">Men White T-Shirt</h6>
-                                            <p class="cart-product-price mb-0">1 X $29.00</p>
-                                        </div>
-                                        <div class="">
-                                            <p class="cart-price mb-0">$250</p>
-                                        </div>
-                                        <div class="cart-product-cancel"><i class="bx bx-x"></i>
-                                        </div>
-                                    </div>
-                                </a>
+                               
                             </div>
                             <a href="javascript:;">
                                 <div class="text-center msg-footer">
@@ -671,21 +162,12 @@
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                    <li><a class="dropdown-item d-flex align-items-center" href="{{route('profileSetting')}}"><i
                                 class="bx bx-user fs-5"></i><span>Profile</span></a>
                     </li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
-                                class="bx bx-cog fs-5"></i><span>Settings</span></a>
-                    </li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
-                                class="bx bx-home-circle fs-5"></i><span>Dashboard</span></a>
-                    </li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
-                                class="bx bx-dollar-circle fs-5"></i><span>Earnings</span></a>
-                    </li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
-                                class="bx bx-download fs-5"></i><span>Downloads</span></a>
-                    </li>
+                   
+                   
+                   
                     <li>
                         <div class="dropdown-divider mb-0"></div>
                     </li>
