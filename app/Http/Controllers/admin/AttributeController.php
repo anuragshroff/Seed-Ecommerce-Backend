@@ -40,7 +40,7 @@ class AttributeController extends Controller
 
     public function updateAttribute(Request $request){
 
-      
+
 
         $validated = $request->validate([
             'name' => 'required|string|max:255',
@@ -65,7 +65,7 @@ class AttributeController extends Controller
 
     }
 
-   
+
 
 
 

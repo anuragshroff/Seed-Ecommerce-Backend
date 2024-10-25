@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class AttributeOptionController extends Controller
 {
     //
-   
+
 
     public function storeAtributeOption(Request $request){
 
@@ -19,7 +19,7 @@ class AttributeOptionController extends Controller
         ]);
 
         AttributeOption::create($validated);
-        return redirect()->route('createAttribute')->with('success', 'Attribute option added successfully!');
+        return redirect()->back()->with('success', 'Attribute option added successfully!');
 
 
     }
@@ -37,7 +37,7 @@ class AttributeOptionController extends Controller
 
     public function attributeOptionUpdate(Request $request){
 
-      
+
 
         $validated = $request->validate([
             'name' => 'required|string|max:255',

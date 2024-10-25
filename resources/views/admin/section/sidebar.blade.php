@@ -12,8 +12,9 @@
     <!--navigation-->
     <ul class="metismenu" id="menu">
         <li>
-            <a href="{{route('dashboard')}}">
-                <div class="parent-icon"><img src="{{asset('assets/static/dashboard.webp')}}" style="width: 30px; height: 30px" />
+            <a href="{{ route('dashboard') }}">
+                <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
+                        style="width: 30px; height: 30px" />
                 </div>
                 <div class="menu-title">Dashboard</div>
             </a>
@@ -21,50 +22,74 @@
         </li>
 
         <li>
-            <a href="{{route('order')}}">
-                <div class="parent-icon"><img src="{{asset('assets/static/dashboard.webp')}}" style="width: 30px; height: 30px" />
+            <a href="{{ route('order') }}">
+                <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
+                        style="width: 30px; height: 30px" />
+                </div>
+                <div class="menu-title">POS</div>
+            </a>
+
+        </li>
+
+        <li>
+            <a href="{{ route('order') }}">
+                <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
+                        style="width: 30px; height: 30px" />
                 </div>
                 <div class="menu-title">Order</div>
             </a>
 
         </li>
 
+
+
+
+            <li>
+                <a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
+                            style="width: 30px; height: 30px" />
+                    </div>
+                    <div class="menu-title">Products</div>
+                </a>
+                <ul>
+                    @if (auth()->guard('web')->user()->can('allProducts'))
+                    <li> <a href="{{ route('product.index') }}">
+                            <i class='bx bx-radio-circle'></i>
+                            All Products
+                        </a>
+                    </li>
+                    @endif
+
+                    @if (auth()->guard('web')->user()->can('createProducts'))
+
+                    <li> <a href="{{ route('product.create') }}">
+                            <i class='bx bx-radio-circle'></i>
+                            Create Products
+                        </a>
+                    </li>
+
+                    @endif
+
+                </ul>
+            </li>
+
+
+
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><img src="{{asset('assets/static/dashboard.webp')}}" style="width: 30px; height: 30px" />
-                </div>
-                <div class="menu-title">Products</div>
-            </a>
-            <ul>
-                <li> <a href="{{route('product.index')}}">
-                        <i class='bx bx-radio-circle'></i>
-                        All Products
-                    </a>
-                </li>
-
-                <li> <a href="{{route('product.create')}}">
-                        <i class='bx bx-radio-circle'></i>
-                        Create Products
-                    </a>
-                </li>
-
-            </ul>
-        </li>
-
-        <li>
-            <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><img src="{{asset('assets/static/dashboard.webp')}}" style="width: 30px; height: 30px" />
+                <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
+                        style="width: 30px; height: 30px" />
                 </div>
                 <div class="menu-title">Template</div>
             </a>
             <ul>
-                <li> <a href="{{route('template.index')}}">
+                <li> <a href="{{ route('template.index') }}">
                         <i class='bx bx-radio-circle'></i>
                         All Template
                     </a>
                 </li>
 
-                <li> <a href="{{route('template.create')}}">
+                <li> <a href="{{ route('template.create') }}">
                         <i class='bx bx-radio-circle'></i>
                         Add Template
                     </a>
@@ -77,18 +102,19 @@
 
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><img src="{{asset('assets/static/dashboard.webp')}}" style="width: 30px; height: 30px" />
+                <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
+                        style="width: 30px; height: 30px" />
                 </div>
                 <div class="menu-title">Attribute</div>
             </a>
             <ul>
-                <li> <a href="{{route('attribute')}}">
+                <li> <a href="{{ route('attribute') }}">
                         <i class='bx bx-radio-circle'></i>
                         List of Attribute
                     </a>
                 </li>
 
-                <li> <a href="{{route('createAttribute')}}">
+                <li> <a href="{{ route('createAttribute') }}">
                         <i class='bx bx-radio-circle'></i>
                         Add Attribute
                     </a>
@@ -99,18 +125,19 @@
 
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><img src="{{asset('assets/static/dashboard.webp')}}" style="width: 30px; height: 30px" />
+                <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
+                        style="width: 30px; height: 30px" />
                 </div>
                 <div class="menu-title">Report</div>
             </a>
             <ul>
-                <li> <a href="{{route('report')}}">
+                <li> <a href="{{ route('report') }}">
                         <i class='bx bx-radio-circle'></i>
                         Order Report
                     </a>
                 </li>
 
-                <li> <a href="{{route('saleReport')}}">
+                <li> <a href="{{ route('saleReport') }}">
                         <i class='bx bx-radio-circle'></i>
                         Sale Report
                     </a>
@@ -121,24 +148,25 @@
 
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><img src="{{asset('assets/static/dashboard.webp')}}" style="width: 30px; height: 30px" />
+                <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
+                        style="width: 30px; height: 30px" />
                 </div>
                 <div class="menu-title">Inventory</div>
             </a>
             <ul>
-                <li> <a href="{{route('stock')}}">
+                <li> <a href="{{ route('stock') }}">
                         <i class='bx bx-radio-circle'></i>
                         Stock
                     </a>
                 </li>
 
-                <li> <a href="{{route('stockOutProducts')}}">
+                <li> <a href="{{ route('stockOutProducts') }}">
                         <i class='bx bx-radio-circle'></i>
                         Stock Out Products
                     </a>
                 </li>
 
-                <li> <a href="{{route('upcomingStockOutProducts')}}">
+                <li> <a href="{{ route('upcomingStockOutProducts') }}">
                         <i class='bx bx-radio-circle'></i>
                         Upcoming Stock Out Products
                     </a>
@@ -149,8 +177,9 @@
         </li>
 
         <li>
-            <a href="{{route('customerInfo')}}">
-                <div class="parent-icon"><img src="{{asset('assets/static/dashboard.webp')}}" style="width: 30px; height: 30px" />
+            <a href="{{ route('customerInfo') }}">
+                <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
+                        style="width: 30px; height: 30px" />
                 </div>
                 <div class="menu-title">Customer Information</div>
             </a>
@@ -159,12 +188,13 @@
 
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><img src="{{asset('assets/static/dashboard.webp')}}" style="width: 30px; height: 30px" />
+                <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
+                        style="width: 30px; height: 30px" />
                 </div>
                 <div class="menu-title">API Setting</div>
             </a>
             <ul>
-                <li> <a href="{{route('couriarApi')}}">
+                <li> <a href="{{ route('couriarApi') }}">
                         <i class='bx bx-radio-circle'></i>
                         Couriar Api
                     </a>
@@ -176,22 +206,48 @@
 
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><img src="{{asset('assets/static/dashboard.webp')}}" style="width: 30px; height: 30px" />
+                <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
+                        style="width: 30px; height: 30px" />
                 </div>
                 <div class="menu-title">Settings</div>
             </a>
             <ul>
-                <li> <a href="{{route('generalSetting')}}">
+                <li> <a href="{{ route('generalSetting') }}">
                         <i class='bx bx-radio-circle'></i>
                         General Settings
                     </a>
                 </li>
 
-               
 
-                <li> <a href="{{route('media')}}">
+
+                <li> <a href="{{ route('media') }}">
                         <i class='bx bx-radio-circle'></i>
                         Media
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
+                        style="width: 30px; height: 30px" />
+                </div>
+                <div class="menu-title">Access Manage</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('role-user.index') }}">
+                        <i class='bx bx-radio-circle'></i>
+                        Role User
+                    </a>
+                </li>
+
+
+
+                <li> <a href="{{ route('role-permission.index') }}">
+                        <i class='bx bx-radio-circle'></i>
+                        Role Permission
                     </a>
                 </li>
 

@@ -183,42 +183,44 @@
     <div class="card radius-10">
         <div class="card-body">
 
-            <div class="row">
-                <div class="col-md-2 mb-md-0 mb-2 ">
-                    <input type="text" class="form-control" placeholder="Customer Name" name="name" style="border: 1px solid #A9FFCD; border-radius: 10px" />
+            <form method="GET" action="{{ route('orders.filter') }}">
+                <div class="row">
+                    <div class="col-md-2 mb-md-0 mb-2">
+                        <input type="text" class="form-control" placeholder="Customer Name" name="customer_name" style="border: 1px solid #A9FFCD; border-radius: 10px" />
+                    </div>
+
+                    <div class="col-md-2 mb-md-0 mb-2">
+                        <input type="text" class="form-control" placeholder="Phone No" name="phone" style="border: 1px solid #A9FFCD; border-radius: 10px" />
+                    </div>
+
+                    <div class="col-md-2 mb-md-0 mb-2">
+                        <input type="text" class="form-control" placeholder="Product Code" name="product_code" style="border: 1px solid #A9FFCD; border-radius: 10px" />
+                    </div>
+
+                    <div class="col-md-2 mb-md-0 mb-2">
+                        <input type="text" class="form-control" placeholder="Invoice No" name="invoice_no" style="border: 1px solid #A9FFCD; border-radius: 10px" />
+                    </div>
+
+                    <div class="col-md-2 mb-md-0 mb-2">
+                        <input type="date" class="form-control" name="date" style="border: 1px solid #A9FFCD; border-radius: 10px" />
+                    </div>
+
+                    <div class="col-md-1 mb-md-0 mb-2">
+                        <button type="submit" class="btn w-100" style="background: #49CE7F; color: white">Filter</button>
+                    </div>
+
+                    <div class="col-md-1 mb-md-0 mb-2">
+                        <a href="{{route('order')}}"  class="btn btn-danger w-100" style=" color: white">Reset</a>
+                    </div>
+
 
                 </div>
-
-                <div class="col-md-2 mb-md-0 mb-2">
-                    <input type="text" class="form-control" placeholder="Phone No" name="name" style="border: 1px solid #A9FFCD; border-radius: 10px" />
-
-                </div>
-
-                <div class="col-md-2 mb-md-0 mb-2 ">
-                    <input type="text" class="form-control" placeholder="Product Code" name="name" style="border: 1px solid #A9FFCD; border-radius: 10px" />
-
-                </div>
-
-                <div class="col-md-2 mb-md-0 mb-2">
-                    <input type="text" class="form-control" placeholder="Invoice No" name="name" style="border: 1px solid #A9FFCD; border-radius: 10px" />
-
-                </div>
-
-                <div class="col-md-2 mb-md-0 mb-2">
-                    <input type="date" class="form-control" placeholder="Date" name="name" style="border: 1px solid #A9FFCD; border-radius: 10px" />
-
-                </div>
-
-                <div class="col-md-2 mb-md-0 mb-2">
-                    <button class="btn w-100" style="background: #49CE7F; color: white">Filter</button>
-
-                </div>
+            </form>
 
 
 
 
 
-            </div>
 
             <div class="d-flex justify-content-between align-items-center mt-3">
 
@@ -243,21 +245,6 @@
                 </div>
 
 
-                
-                <div class="d-flex gap-5">
-                    <div class="dropdown">
-                        <button class="btn dropdown-toggle" style="background: #4acf80; color: white" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown button
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#" onclick="updateDropdownText(this)">Action</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="updateDropdownText(this)">Another action</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="updateDropdownText(this)">Something else here</a></li>
-                        </ul>
-                    </div>
-    
-                    <input type="text" class="form-control"  style="border: 1px solid #A9FFCD"/>
-                </div>
 
             </div>
 
@@ -267,47 +254,64 @@
 
             <br>
             <div class="table-responsive">
-                <table class="table align-middle mb-0">
+                <table id="example" class="table align-middle mb-0">
                     <thead class="" style="background: #A9FFCD">
                         <tr>
                             <th>SL</th>
-                            <th>Customer Info</th>
-                            <th>Product Info</th>
-                            <th>Order Status</th>
-                            <th>Courier Status</th>
+                            <th>Invoice</th>
+                            <th>Customer</th>
+                            <th>Products</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>Couriar Status</th>
 
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
+
+                        @foreach($orders as $count => $item)
                         <tr>
-                            <td>1</td>
+                            <td>{{$count + 1}}</td>
 
                             <td>
-                                <div class="d-flex align-items-center">
-                                    <div class="recent-product-img">
-                                        <img src="assets/images/products/12.png" alt="">
-                                    </div>
-                                    <div class="ms-2">
-                                        <h6 class="mb-1 font-14">Light Blue Chair</h6>
-                                    </div>
-                                </div>
+                               {{$item->invoice_no}}
                             </td>
-                            <td>Brooklyn Zeo</td>
-                            <td>12 Jul 2020</td>
+                            <td>
+                                <p>{{$item->customers->name}}</p>
+                                <p>{{$item->customers->address}}</p>
+                                <p>{{$item->customers->phone}}</p>
 
-                            <td>
-                                <div class="d-grid">
-                                    <a href="javascript:;" class="btn btn-sm btn-outline-info radius-30">Pending</a>
-                                </div>
                             </td>
+                            <td>{{$item->products->name}}</td>
+                            <td>{{$item->amount}}</td>
+                            <td>{{$item->status}}</td>
+                            <td>Couriar</td>
                             <td>
-                                <div class="d-flex order-actions gap-3">
-                                    <a href="javascript:;"><i class='bx bx-trash'></i></a>
-                                    <a href="javascript:;"><i class='bx bx-cloud-download'></i></a>
+
+                                <div class="d-flex gap-5">
+                                    <div class="dropdown">
+                                        <button class="btn dropdown-toggle" style="background: #4acf80; color: white" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Update Order
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownText(this)">Pending</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownText(this)">Processing</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownText(this)">Delivered</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownText(this)">Cancelled</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownText(this)">Pending Delivery</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="updateDropdownText(this)">Returned</a></li>
+                                        </ul>
+                                    </div>
+
+
                                 </div>
+
                             </td>
+
+
                         </tr>
+                        @endforeach
 
 
                     </tbody>
@@ -327,5 +331,7 @@
         document.getElementById('dropdownMenuButton1').textContent = selectedText;
     }
 </script>
+
+
 
 @endpush
