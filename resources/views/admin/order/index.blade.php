@@ -11,7 +11,7 @@
                 <div class="card-body" style="background: #C6E5C3">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0 fw-bold" style="color: black; font-size : 25px">2362</p>
+                            <p class="mb-0 fw-bold" style="color: black; font-size : 25px">{{$pending_amount}}</p>
                             <h6 class="my-1">Pending</h6>
 
                         </div>
@@ -32,7 +32,7 @@
                 <div class="card-body" style="background: #9794FF">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0 fw-bold" style="color: black; font-size : 25px">2362</p>
+                            <p class="mb-0 fw-bold" style="color: black; font-size : 25px">{{$confirmed_amount}}</p>
                             <h6 class="my-1">Confirmed</h6>
 
                         </div>
@@ -53,7 +53,7 @@
                 <div class="card-body" style="background: #C69AE7">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0 fw-bold" style="color: black; font-size : 25px">2362</p>
+                            <p class="mb-0 fw-bold" style="color: black; font-size : 25px">{{$processing_amount}}</p>
                             <h6 class="my-1">Processing</h6>
 
                         </div>
@@ -74,7 +74,7 @@
                 <div class="card-body" style="background: #6FE45F">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0 fw-bold" style="color: black; font-size : 25px">2362</p>
+                            <p class="mb-0 fw-bold" style="color: black; font-size : 25px">{{$pick_up_amount}}</p>
                             <h6 class="my-1">Pick Up</h6>
 
                         </div>
@@ -95,7 +95,7 @@
                 <div class="card-body" style="background: #FDCA6E">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0 fw-bold" style="color: black; font-size : 25px">2362</p>
+                            <p class="mb-0 fw-bold" style="color: black; font-size : 25px">{{$on_the_way_amount}}</p>
                             <h6 class="my-1">On The Way</h6>
 
                         </div>
@@ -116,7 +116,7 @@
                 <div class="card-body" style="background: #60629F">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0 fw-bold" style="color: black; font-size : 25px">2362</p>
+                            <p class="mb-0 fw-bold" style="color: black; font-size : 25px">{{$delivered_amount}}</p>
                             <h6 class="my-1">Delivered</h6>
 
                         </div>
@@ -137,7 +137,7 @@
                 <div class="card-body" style="background: #98A8BF">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0 fw-bold" style="color: black; font-size : 25px">2362</p>
+                            <p class="mb-0 fw-bold" style="color: black; font-size : 25px">{{$cancelled_amount}}</p>
                             <h6 class="my-1">Canceled</h6>
 
                         </div>
@@ -159,7 +159,7 @@
                 <div class="card-body" style="background: #ACCBAB">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0 fw-bold" style="color: black; font-size : 25px">2362</p>
+                            <p class="mb-0 fw-bold" style="color: black; font-size : 25px">{{$returned_amount}}</p>
                             <h6 class="my-1">Return</h6>
 
                         </div>
@@ -353,7 +353,7 @@
                                                 
                                             </li>
 
-                                            @foreach(['Pending', 'Processing', 'Delivered', 'Cancelled', 'Pending Delivery', 'Returned'] as $status)
+                                            @foreach(['Pending', 'Processing', 'Delivered', 'Cancelled', 'Pending Delivery', 'Returned', 'Confirmed', 'Processing', 'Pick Up', 'On The Way'] as $status)
                                             <li>
                                                 <form action="{{ route('order.updateStatus', $item->id) }}" method="POST">
                                                     @csrf
@@ -382,12 +382,14 @@
                                                 <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
                                             </svg>
                                         </a>
+                                        
                                         <a href="{{ route('order.downloadPDF', $item->id) }}" class="d-flex justify-content-center align-items-center" style="background: #4ACF80; width: 40px; height: 40px; border-radius: 20px;">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FEFEFE" class="bi bi-download" viewBox="0 0 16 16">
                                                 <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5" />
                                                 <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z" />
                                             </svg>
                                         </a>
+
                                         <a href="{{route('order.delete', $item->id)}}" class="d-flex justify-content-center align-items-center" style="background: #4ACF80; width: 40px; height: 40px; border-radius: 20px;">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#FEFEFE" class="bi bi-trash3" viewBox="0 0 16 16">
                                                 <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />

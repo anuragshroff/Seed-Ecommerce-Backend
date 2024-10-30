@@ -46,7 +46,7 @@
 
 
 
-    <title>Rukada - Responsive Bootstrap 5 Admin Template</title>
+    <title>Landing Page Dashboard</title>
 </head>
 
 <body>
@@ -76,7 +76,12 @@
 
 
     <!-- search modal -->
-    @include('admin.section.search-modal')
+    {{--
+    
+     @include('admin.section.search-modal')
+    
+    --}}
+   
 
 
     <!--start switcher-->

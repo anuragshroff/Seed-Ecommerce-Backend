@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ReportController extends Controller
 {
@@ -20,6 +21,24 @@ class ReportController extends Controller
 
         return view('admin.report.order-report', compact('allOrder', 'allProduct'));
     }
+
+    public function orderReportPdf()
+    {
+
+        $allProduct = Product::all();
+        $allOrder = Order::latest()->with('order_attributes.products')->get();
+
+        //return view('admin.report.pdf.sale', compact('allOrder', 'allProduct'));
+
+        $pdf = Pdf::loadView('admin.report.pdf.order', compact('allOrder', 'allProduct'));
+
+        // Set filename with current date
+        $currentDate = date('Y-m-d');
+        $fileName = 'sale_report_' . $currentDate . '.pdf';
+
+        return $pdf->download($fileName);
+    }
+
 
     /*
 
@@ -120,8 +139,7 @@ class ReportController extends Controller
 
 
 
-
-
+  
 
 
 

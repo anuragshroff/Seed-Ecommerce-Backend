@@ -7,6 +7,7 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use setasign\Fpdi\Fpdi;
+use Carbon\Carbon;
 
 
 
@@ -16,7 +17,17 @@ class OrderController extends Controller
     {
         $orders = Order::latest()->with('order_attributes.products')->get();
 
-        return view('admin.order.index', compact('orders'));
+        $pending_amount = Order::where('status', 'Pending')->sum('amount');
+        $delivered_amount = Order::where('status', 'Delivered', 'Cancelled')->sum('amount');
+        $cancelled_amount = Order::where('status', 'Cancelled')->sum('amount');
+        $returned_amount = Order::where('status', 'Returned')->sum('amount');
+
+        $confirmed_amount = Order::where('status', 'Confirmed')->sum('amount');
+        $processing_amount = Order::where('status', 'Processing')->sum('amount');
+        $pick_up_amount = Order::where('status', 'Pick Up')->sum('amount');
+        $on_the_way_amount = Order::where('status', 'On The Way')->sum('amount');
+
+        return view('admin.order.index', compact('orders','pending_amount', 'delivered_amount', 'cancelled_amount', 'returned_amount', 'confirmed_amount', 'processing_amount', 'pick_up_amount', 'on_the_way_amount' ));
     }
 
     public function orderFilter(Request $request)
@@ -58,7 +69,18 @@ class OrderController extends Controller
 
         $orders = $query->get();
 
-        return view('admin.order.index', compact('orders'));
+
+        $pending_amount = Order::where('status', 'Pending')->sum('amount');
+        $delivered_amount = Order::where('status', 'Delivered', 'Cancelled')->sum('amount');
+        $cancelled_amount = Order::where('status', 'Cancelled')->sum('amount');
+        $returned_amount = Order::where('status', 'Returned')->sum('amount');
+
+        $confirmed_amount = Order::where('status', 'Confirmed')->sum('amount');
+        $processing_amount = Order::where('status', 'Processing')->sum('amount');
+        $pick_up_amount = Order::where('status', 'Pick Up')->sum('amount');
+        $on_the_way_amount = Order::where('status', 'On The Way')->sum('amount');
+
+        return view('admin.order.index', compact('orders','pending_amount', 'delivered_amount', 'cancelled_amount', 'returned_amount', 'confirmed_amount', 'processing_amount', 'pick_up_amount', 'on_the_way_amount' ));
     }
 
     public function updateStatus(Request $request, $id)

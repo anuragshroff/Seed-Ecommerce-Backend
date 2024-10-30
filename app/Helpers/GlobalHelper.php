@@ -26,8 +26,8 @@ if (!function_exists('getApiSetting')) {
 if(!function_exists('canAccess')) {
     function canAccess(array $permissions) : bool
     {
-        $permission = auth()->guard('admin')->user()->hasAnyPermission($permissions);
-        $superAdmin = auth()->guard('admin')->user()->hasRole('Super Admin');
+        $permission = auth()->guard('web')->user()->hasAnyPermission($permissions);
+        $superAdmin = auth()->guard('web')->user()->hasRole('Super Admin');
         if($permission || $superAdmin) {
             return true;
         }

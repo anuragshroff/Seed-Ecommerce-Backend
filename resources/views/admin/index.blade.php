@@ -202,7 +202,12 @@
                             </td>
                             <td>{{$item->invoice_no}}</td>
                             <td>{{$item->name}}</td>
-                            <td>{{$item->amount}} ৳</td>
+                            <td>
+
+                                {{$item->mobile}}
+
+
+                            </td>
                             <td>
                                 <div class="d-grid">
                                     <a href="javascript:;"

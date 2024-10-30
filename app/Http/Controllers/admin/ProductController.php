@@ -22,6 +22,9 @@ class ProductController extends Controller
 
     use FileUploadTrait;
 
+   
+
+
 
 
     public function index()

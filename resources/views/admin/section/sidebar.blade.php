@@ -1,10 +1,10 @@
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
-            <img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+            <img src="{{asset('assets/images/logo-icon.png')}}" class="logo-icon" alt="logo icon">
         </div>
         <div>
-            <h4 class="logo-text">Rukada</h4>
+            <h4 class="logo-text">E-Dashboard</h4>
         </div>
         <div class="toggle-icon ms-auto"><i class='bx bx-arrow-back'></i>
         </div>
@@ -23,7 +23,7 @@
 
         <li>
             <a href="{{ route('pos.index') }}">
-                <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
+                <div class="parent-icon"><img src="{{ asset('assets/static/pos.webp') }}"
                         style="width: 30px; height: 30px" />
                 </div>
                 <div class="menu-title">POS</div>
@@ -33,10 +33,10 @@
 
         <li>
             <a href="{{ route('order') }}">
-                <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
+                <div class="parent-icon"><img src="{{ asset('assets/static/orders.webp') }}"
                         style="width: 30px; height: 30px" />
                 </div>
-                <div class="menu-title">Order</div>
+                <div class="menu-title">Orders</div>
             </a>
 
         </li>
@@ -52,7 +52,7 @@
                     <div class="menu-title">Products</div>
                 </a>
                 <ul>
-                    @if (auth()->guard('web')->user()->can('allProducts'))
+                    @if (auth()->guard('web')->user()->can('Read'))
                     <li> <a href="{{ route('product.index') }}">
                             <i class='bx bx-radio-circle'></i>
                             All Products
@@ -60,7 +60,7 @@
                     </li>
                     @endif
 
-                    @if (auth()->guard('web')->user()->can('createProducts'))
+                    @if (auth()->guard('web')->user()->can('Create'))
 
                     <li> <a href="{{ route('product.create') }}">
                             <i class='bx bx-radio-circle'></i>
@@ -77,7 +77,7 @@
 
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
+                <div class="parent-icon"><img src="{{ asset('assets/static/template.webp') }}"
                         style="width: 30px; height: 30px" />
                 </div>
                 <div class="menu-title">Template</div>
@@ -125,7 +125,7 @@
 
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
+                <div class="parent-icon"><img src="{{ asset('assets/static/reports.webp') }}"
                         style="width: 30px; height: 30px" />
                 </div>
                 <div class="menu-title">Report</div>
@@ -148,7 +148,7 @@
 
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
+                <div class="parent-icon"><img src="{{ asset('assets/static/inventory.webp') }}"
                         style="width: 30px; height: 30px" />
                 </div>
                 <div class="menu-title">Inventory</div>
@@ -188,7 +188,7 @@
 
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
+                <div class="parent-icon"><img src="{{ asset('assets/static/delivery.webp') }}"
                         style="width: 30px; height: 30px" />
                 </div>
                 <div class="menu-title">API Setting</div>
@@ -202,6 +202,16 @@
 
 
             </ul>
+        </li>
+
+        <li>
+            <a href={{route('marketing')}}>
+                <div class="parent-icon"><img src="{{ asset('assets/static/marketing.webp') }}"
+                        style="width: 30px; height: 30px" />
+                </div>
+                <div class="menu-title">Marketing</div>
+            </a>
+            
         </li>
 
         <li>
@@ -231,10 +241,10 @@
 
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
+                <div class="parent-icon"><img src="{{ asset('assets/static/administration.webp') }}"
                         style="width: 30px; height: 30px" />
                 </div>
-                <div class="menu-title">Access Manage</div>
+                <div class="menu-title">Administration</div>
             </a>
             <ul>
                 <li> <a href="{{ route('role-user.index') }}">

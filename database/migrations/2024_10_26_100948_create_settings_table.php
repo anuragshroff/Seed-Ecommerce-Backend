@@ -35,6 +35,11 @@ return new class extends Migration
             $table->string('youtube')->nullable();
             $table->string('tiktok')->nullable();
             $table->string('twitter')->nullable();
+
+            $table->string('logo')->nullable();
+            $table->string('favicon')->nullable();
+
+
            
             $table->timestamps();
         });

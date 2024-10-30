@@ -38,7 +38,7 @@
 
         <div class="row mt-5">
 
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
 
@@ -104,7 +104,7 @@
 
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
                         <p style="font-size: 19px">Product Information</p>

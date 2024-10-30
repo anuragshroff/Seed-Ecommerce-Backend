@@ -57,28 +57,49 @@ Route::group(
 
 
         //product
-        Route::resource('product', ProductController::class);
+        //Route::resource('product', ProductController::class);
 
-        /*
+
+
+        // Group the routes under a middleware if authentication is required
+        
 
         Route::middleware(['auth:web'])->group(function () {
 
-            Route::middleware('permission:allProducts')->group(function () {
-                Route::get('product', [ProductController::class, 'index'])->name('product.index');
-                Route::get('product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit'); // Add edit route
+            // Permission-based access control for ProductController actions
+            Route::get('product', [ProductController::class, 'index'])
+                ->name('product.index')
+                ->middleware('permission:Read');
 
-            });
+            Route::get('product/create', [ProductController::class, 'create'])
+                ->name('product.create')
+                ->middleware('permission:Create');
 
+            Route::post('product', [ProductController::class, 'store'])
+                ->name('product.store')
+                ->middleware('permission:Create');
 
-            Route::middleware('permission:createProducts')->group(function () {
-                Route::get('product/create', [ProductController::class, 'create'])->name('product.create');
-                Route::post('product', [ProductController::class, 'store'])->name('product.store');
-            });
+            Route::get('product/{product}', [ProductController::class, 'show'])
+                ->name('product.show')
+                ->middleware('permission:allProducts');
 
+            Route::get('product/{product}/edit', [ProductController::class, 'edit'])
+                ->name('product.edit')
+                ->middleware('permission:Edit');
 
+            Route::put('product/{product}', [ProductController::class, 'update'])
+                ->name('product.update')
+                ->middleware('permission:Update');
+
+            Route::delete('product/{product}', [ProductController::class, 'destroy'])
+                ->name('product.destroy')
+                ->middleware('permission:Delete');
         });
 
-        */
+        
+
+
+
 
 
 
@@ -111,6 +132,10 @@ Route::group(
         //Report
         Route::get('/report', [ReportController::class, 'report'])->name('report');
         Route::get('/sale-report', [ReportController::class, 'saleReport'])->name('saleReport');
+
+        Route::get('/order-report-pdf', [ReportController::class, 'orderReportPdf'])->name('orderReportPdf');
+
+
         Route::get('report-filter', [ReportController::class, 'reportFilter'])->name('reportFilter');
         Route::get('sale-filter', [ReportController::class, 'saleFilter'])->name('saleFilter');
 
@@ -131,6 +156,8 @@ Route::group(
         Route::get('/general-setting', [GeneralController::class, 'generalSetting'])->name('generalSetting');
         Route::post('/general-setting/store', [GeneralController::class, 'store'])->name('generalSetting.store');
         Route::get('/media', [GeneralController::class, 'media'])->name('media');
+        Route::post('/upload-media', [GeneralController::class, 'uploadMedia'])->name('uploadMedia');
+        Route::get('/marketing', [GeneralController::class, 'marketing'])->name('marketing');
 
         //Profile Setting
         Route::get('/profile-setting', [ProfileController::class, 'profileSetting'])->name('profileSetting');

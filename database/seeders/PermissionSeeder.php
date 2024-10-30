@@ -16,7 +16,7 @@ class PermissionSeeder extends Seeder
         $permissions = array(
             array(
                 "id" => 1,
-                "name" => "allProducts",
+                "name" => "Create",
                 "guard_name" => "web",
                 "group" => "Product",
                 "created_at" => "2019-10-05 23:58:06",
@@ -25,7 +25,34 @@ class PermissionSeeder extends Seeder
 
             array(
                 "id" => 2,
-                "name" => "createProducts",
+                "name" => "Read",
+                "guard_name" => "web",
+                "group" => "Product",
+                "created_at" => "2019-10-05 23:58:06",
+                "updated_at" => "2019-10-05 23:58:06",
+            ),
+
+            array(
+                "id" => 3,
+                "name" => "Edit",
+                "guard_name" => "web",
+                "group" => "Product",
+                "created_at" => "2019-10-05 23:58:06",
+                "updated_at" => "2019-10-05 23:58:06",
+            ),
+
+            array(
+                "id" => 4,
+                "name" => "Update",
+                "guard_name" => "web",
+                "group" => "Product",
+                "created_at" => "2019-10-05 23:58:06",
+                "updated_at" => "2019-10-05 23:58:06",
+            ),
+
+            array(
+                "id" => 5,
+                "name" => "Delete",
                 "guard_name" => "web",
                 "group" => "Product",
                 "created_at" => "2019-10-05 23:58:06",
