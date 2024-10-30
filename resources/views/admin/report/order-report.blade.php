@@ -21,18 +21,18 @@
         <div class="card-body">
             <form id="filterForm" method="GET" action="{{ route('reportFilter') }}">
                 <div class="row">
-                    <div class="col-md-3 mb-3 mb-md-0">
+                    <div class="col-md-2 mb-3 mb-md-0">
                         <label class="form-label">Start Date : </label>
                         <input type="date" name="start_date" class="form-control" value="{{ request()->get('start_date') }}" />
                     </div>
     
-                    <div class="col-md-3 mb-3 mb-md-0">
+                    <div class="col-md-2 mb-3 mb-md-0">
                         <label class="form-label">End Date : </label>
                         <input type="date" name="end_date" class="form-control" value="{{ request()->get('end_date') }}" />
                     </div>
     
-                    <div class="col-md-3">
-                        <label class="form-label">Filter By Date : </label>
+                    <div class="col-md-2">
+                        <label class="form-label">Filter By Day : </label>
                         <select name="date_filter" class="form-select" aria-label="Default select example">
                             <option selected disabled>Open this select menu</option>
                             <option value="today">Today</option>
@@ -42,6 +42,25 @@
                             <option value="last_month">Last Month</option>
                         </select>
                     </div>
+
+                
+
+                    <div class="col-md-2">
+                        <label for="single-select-field" class="form-label">Filter By Product :</label>
+                        <select class="form-select" name="product_filter" id="single-select-field" data-placeholder="Choose one thing">
+                           
+                            <option></option>
+                           
+                            @foreach($allProduct as $item)
+                            <option value="{{$item->name}}">{{$item->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                   
+
+                  
+
     
                     <div class="col-md-3 d-flex justify-content-between align-items-center" style="margin-top: 25px">
                         <div class="col">
@@ -82,8 +101,25 @@
                         <tr>
                             <td>{{ $item->invoice_no }}</td>
                             <td>{{ $item->date }}</td>
-                            <td>{{ $item->products->name }}</td>
-                            <td>{{ $item->quantity }}</td>
+                           
+                            <td>
+                                @foreach($item->order_attributes as $data)
+                                
+                                {{$data->products['name']}},
+                                @endforeach
+                            
+                            </td>
+                            
+                            <td>
+                                @foreach($item->order_attributes as $data)
+
+                                  {{$data->quantity}},
+                                
+                               
+                                @endforeach
+
+                                
+                            </td>
                             <td>{{ $item->amount }}</td>
                         </tr>
                         @endforeach
@@ -97,3 +133,5 @@
 
 </div>
 @endsection
+
+

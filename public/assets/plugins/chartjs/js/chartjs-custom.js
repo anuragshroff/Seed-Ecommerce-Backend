@@ -101,7 +101,7 @@ $(function() {
 
 
      // chart3
-     var ctx = document.getElementById('chart3').getContext('2d');
+     var ctx = document.getElementById('apex').getContext('2d');
      var myChart = new Chart(ctx, {
          type: 'pie',
          data: {

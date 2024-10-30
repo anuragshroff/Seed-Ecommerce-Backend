@@ -16,25 +16,27 @@
                         <tr>
                           
                             <th>Name</th>
-                            <th>Email</th>
+                            
                             <th>Phone Number</th>
                             <th>Address</th>
-                            <th>City</th>
+                            
                          
 
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($all_customers as $item)
                         <tr>
-                            <td>Full Sleves T-shirt</td>
-                            <td>RDJ-96955</td>
-                            <td>5</td>
-                            <td>4</td>
-                            <td>1</td>
+                            <td>{{$item->name}}</td>
+                           
+                            <td>{{$item->mobile}}</td>
+                            <td>{{$item->address}}</td>
+                          
                            
                           
 
                         </tr>
+                        @endforeach
 
 
                     </tbody>

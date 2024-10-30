@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\OrderAttribute;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -20,9 +21,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]); */
 
-       // $this->call(OrdersTableSeeder::class);
         //$this->call(UserSeeder::class);
-        $this->call(PermissionSeeder::class);
+       // $this->call(OrdersTableSeeder::class);
+       
+        //$this->call(PermissionSeeder::class);
+
+        //$this->call(OrderAttributeSeeder::class);
     }
 
 

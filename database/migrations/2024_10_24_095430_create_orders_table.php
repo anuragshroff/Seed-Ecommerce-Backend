@@ -14,12 +14,21 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('invoice_no')->unique();
-            $table->string('customer_id')->nullable();
             $table->date('date');
-            $table->string('product_id');
-            $table->integer('quantity');
             $table->decimal('amount', 10, 2);
+            $table->enum('payment_status', ['Paid', 'Unpaid'])->default('Unpaid');
             $table->enum('status', ['Pending', 'Processing', 'Delivered', 'Cancelled', 'Pending Delivery', 'Returned'])->default('Pending');
+            $table->string('name')->null();
+            $table->string('address')->null();
+            $table->string('mobile')->null();
+            $table->string('area')->null();
+
+            $table->string('consignment_id')->null();
+            $table->string('tracking_code')->null();
+            $table->string('couriar_status')->null();
+
+
+
             $table->timestamps();
         });
     }

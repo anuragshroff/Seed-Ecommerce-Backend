@@ -9,16 +9,16 @@ class Order extends Model
     //
     protected $guarded = [];
 
-    public function products()
+    // In Order.php model
+    protected $casts = [
+        'date' => 'date',
+    ];
+
+
+
+
+    public function order_attributes()
     {
-        return $this->belongsTo(Product::class, 'product_id', 'id');
+        return $this->hasMany(OrderAttribute::class, 'order_id');
     }
-
-    public function customers()
-    {
-        return $this->belongsTo(User::class, 'customer_id', 'id');
-    }
-
-
-
 }

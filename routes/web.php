@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\GeneralController;
 use App\Http\Controllers\admin\InventoryController;
 use App\Http\Controllers\admin\OrderController;
+use App\Http\Controllers\admin\PosController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\admin\ReportController;
@@ -38,11 +39,27 @@ Route::group(
 
         //order
         Route::get('/order', [OrderController::class, 'order'])->name('order');
-        Route::get('/order-filter', [OrderController::class, 'orderFilter'])->name('orders.filter');
+        Route::post('/orders/{id}/update-status', [OrderController::class, 'updateStatus'])->name('order.updateStatus');
+        Route::get('/order-filter', [OrderController::class, 'orderFilter'])->name('order.filter');
+        Route::get('/order-view/{id}', [OrderController::class, 'orderView'])->name('order.view');
+        Route::get('/order/print/{id}', [OrderController::class, 'print'])->name('order.print');
+        Route::get('/order/{id}/download-pdf', [OrderController::class, 'downloadPDF'])->name('order.downloadPDF');
+        Route::get('/order/{id}/delete', [OrderController::class, 'delete'])->name('order.delete');
+        Route::post('/orders/bulk-delete', [OrderController::class, 'bulkDelete'])->name('order.bulkDelete');
+        Route::get('/download-bulk-pdf', [OrderController::class, 'downloadBulkPdf'])->name('download.bulkpdf');
+
+
+        //pos
+        Route::resource('pos', PosController::class);
+        Route::get('/products/search', [PosController::class, 'search'])->name('products.search');
+        Route::post('/pos-order', [PosController::class, 'posOrder'])->name('posorders.store');
+
 
 
         //product
-        //Route::resource('product', ProductController::class);
+        Route::resource('product', ProductController::class);
+
+        /*
 
         Route::middleware(['auth:web'])->group(function () {
 
@@ -60,6 +77,8 @@ Route::group(
 
 
         });
+
+        */
 
 
 
@@ -93,8 +112,9 @@ Route::group(
         Route::get('/report', [ReportController::class, 'report'])->name('report');
         Route::get('/sale-report', [ReportController::class, 'saleReport'])->name('saleReport');
         Route::get('report-filter', [ReportController::class, 'reportFilter'])->name('reportFilter');
+        Route::get('sale-filter', [ReportController::class, 'saleFilter'])->name('saleFilter');
 
-        //Inventory
+        //Stock Inventory
         Route::get('/stock', [InventoryController::class, 'stock'])->name('stock');
         Route::get('/stock-out-product', [InventoryController::class, 'stockOutProduct'])->name('stockOutProducts');
         Route::get('/upcoming-stock-out-product', [InventoryController::class, 'upcomingStockOut'])->name('upcomingStockOutProducts');
@@ -102,11 +122,14 @@ Route::group(
         //Customer Info
         Route::get('/customer-info', [CustomerInfoController::class, 'customerInfo'])->name('customerInfo');
 
-        //Api manage
+        //Api Setting
         Route::get('/couriar-api', [Apicontroller::class, 'couriarApi'])->name('couriarApi');
+        Route::get('/send-steadfast/{id}', [ApiController::class, 'sendSteadfast'])->name('sendSteadfast');
+        Route::post('/api-store', [Apicontroller::class, 'apiStore'])->name('api.store');
 
         //General Setting
         Route::get('/general-setting', [GeneralController::class, 'generalSetting'])->name('generalSetting');
+        Route::post('/general-setting/store', [GeneralController::class, 'store'])->name('generalSetting.store');
         Route::get('/media', [GeneralController::class, 'media'])->name('media');
 
         //Profile Setting

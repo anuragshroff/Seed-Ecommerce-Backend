@@ -22,7 +22,7 @@
         </li>
 
         <li>
-            <a href="{{ route('order') }}">
+            <a href="{{ route('pos.index') }}">
                 <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
                         style="width: 30px; height: 30px" />
                 </div>

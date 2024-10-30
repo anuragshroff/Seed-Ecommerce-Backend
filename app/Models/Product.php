@@ -28,5 +28,10 @@ class Product extends Model
         return $this->hasMany(ProductAttributeOption::class);
     }
 
+    public function order_attributes()
+    {
+        return $this->hasMany(OrderAttribute::class);
+    }
+
     
 }

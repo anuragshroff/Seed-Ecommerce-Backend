@@ -15,7 +15,7 @@ class OrdersTableSeeder extends Seeder
         $orders = [
             [
                 'invoice_no' => '1402618334',
-                'customer' => 'John Doe',
+                'customer_id' => '2',
                 'date' => '2024-10-14',
                 'product_id' => '2',
                 'quantity' => 3,
@@ -24,81 +24,81 @@ class OrdersTableSeeder extends Seeder
             ],
             [
                 'invoice_no' => '1402618335',
-                'customer' => 'Jane Smith',
+                'customer_id' => '2',
                 'date' => '2024-10-15',
-                'product_id' => '3',
+                'product_id' => '1',
                 'quantity' => 2,
                 'amount' => 200,
                 'status' => 'Processing'
             ],
             [
                 'invoice_no' => '1402618336',
-                'customer' => 'Mark Johnson',
+                'customer_id' => '2',
                 'date' => '2024-10-16',
-                'product_id' => '4',
+                'product_id' => '1',
                 'quantity' => 5,
                 'amount' => 750,
                 'status' => 'Delivered'
             ],
             [
                 'invoice_no' => '1402618337',
-                'customer' => 'Lucy Brown',
+                'customer_id' => '2',
                 'date' => '2024-10-17',
-                'product_id' => '5',
+                'product_id' => '2',
                 'quantity' => 1,
                 'amount' => 300,
                 'status' => 'Cancelled'
             ],
             [
                 'invoice_no' => '1402618338',
-                'customer' => 'James White',
+                'customer_id' => '2',
                 'date' => '2024-10-18',
-                'product_id' => '6',
+                'product_id' => '1',
                 'quantity' => 4,
                 'amount' => 400,
                 'status' => 'Pending'
             ],
             [
                 'invoice_no' => '1402618339',
-                'customer' => 'Patricia Miller',
+                'customer_id' => '2',
                 'date' => '2024-10-19',
-                'product_id' => '7',
+                'product_id' => '2',
                 'quantity' => 3,
                 'amount' => 500,
                 'status' => 'Returned'
             ],
             [
                 'invoice_no' => '1402618340',
-                'customer' => 'Robert Wilson',
+                'customer_id' => '2',
                 'date' => '2024-10-20',
-                'product_id' => '8',
+                'product_id' => '1',
                 'quantity' => 6,
                 'amount' => 750,
                 'status' => 'Pending Delivery'
             ],
             [
                 'invoice_no' => '1402618341',
-                'customer' => 'Michael Moore',
+                'customer_id' => '2',
                 'date' => '2024-10-21',
-                'product_id' => '9',
+                'product_id' => '2',
                 'quantity' => 2,
                 'amount' => 250,
                 'status' => 'Processing'
             ],
             [
                 'invoice_no' => '1402618342',
-                'customer' => 'William Taylor',
+                'customer_id' => '2',
                 'date' => '2024-10-22',
-                'product_id' => '10',
+                'product_id' => '1',
                 'quantity' => 7,
                 'amount' => 1000,
                 'status' => 'Delivered'
             ],
             [
                 'invoice_no' => '1402618343',
-                'customer' => 'David Anderson',
+                'customer_id' => '2',
                 'date' => '2024-10-23',
-                'product_id' => '11',
+                'product_id' => '1',
                 'quantity' => 8,
                 'amount' => 1250,
                 'status' => 'Cancelled'

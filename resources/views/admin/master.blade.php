@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="semi-dark">
+<html lang="en" class="light-theme">
 
 
 <!-- Mirrored from codervent.com/rukada/demo/vertical/ltr/index2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Oct 2024 09:34:18 GMT -->
@@ -24,6 +24,11 @@
     <!-- Bootstrap CSS -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/bootstrap-extended.css') }}" rel="stylesheet">
+
+    <!-- Select2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
@@ -62,7 +67,8 @@
         <!--start overlay-->
         <div class="overlay toggle-icon"></div>
         <!--end overlay-->
-        <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+        <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i
+                class='bx bxs-up-arrow-alt'></i></a>
         <!--End Back To Top Button-->
         @include('admin.section.footer')
 
@@ -85,6 +91,7 @@
     <script src="{{ asset('assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
+
 
     <script src="{{ asset('assets/plugins/apexcharts-bundle/js/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/apexcharts-bundle/js/apex-custom.js') }}"></script>
@@ -139,12 +146,19 @@
 
 
 
+    <!-- Select2 JavaScript from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="{{ asset('assets/plugins/select2/js/select2-custom.js') }}"></script>
+
+
 
 
 
     <!--app JS-->
     <script src="{{ asset('assets/js/app.js') }}"></script>
     <script src="{{ asset('assets/js/index2.js') }}"></script>
+
+
 
     <script>
         new PerfectScrollbar('.product-list');
@@ -166,9 +180,29 @@
             });
         }
 
+        function error_noti(message) {
+        Lobibox.notify('error', {
+            pauseDelayOnHover: true, 
+            width: 300,
+            size: 'mini',
+            continueDelayOnInactiveTab: false,
+            position: 'top right',
+            icon: 'bx bx-error',
+            backgroundColor: '#dc3545 !important',
+            msg: message
+        });
+    }
+
         @if(session('success'))
-        // Trigger the success notification
-        success_noti("{{ session('success') }}");
+            // Trigger the success notification
+           success_noti("{{ session('success') }}");
+        @endif
+
+
+        @if(session()->has('errorMessages'))
+            @foreach(session('errorMessages') as $errorMessage)
+                 error_noti("{{ $errorMessage }}");
+            @endforeach
         @endif
 
     </script>
