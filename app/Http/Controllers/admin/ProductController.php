@@ -22,7 +22,7 @@ class ProductController extends Controller
 
     use FileUploadTrait;
 
-   
+
 
 
 
@@ -49,15 +49,26 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
+
+
+
         $validatedData = $request->validated();
 
-
+        //dd ($validatedData);
 
         $imagePaths = [];
-        foreach (['featured_image', 'first_image', 'second_image', 'third_image'] as $image) {
+        foreach (['featured_image', 'first_image', 'second_image', 'third_image', 'video'] as $image) {
             if ($request->hasFile($image)) {
 
                 $imagePaths[$image] = $this->uploadFile($request, $image);
+            }
+        }
+
+        // Handle multiple review images
+        $reviewImagePaths = [];
+        if ($request->hasFile('review_images')) {
+            foreach ($request->file('review_images') as $reviewImage) {
+                $reviewImagePaths[] = $this->uploadFile($request, $reviewImage);
             }
         }
 
@@ -68,6 +79,14 @@ class ProductController extends Controller
         $validatedData['first_image'] = $imagePaths['first_image'] ?? null;
         $validatedData['second_image'] = $imagePaths['second_image'] ?? null;
         $validatedData['third_image'] = $imagePaths['third_image'] ?? null;
+        $validatedData['review_images'] = json_encode($reviewImagePaths);
+        $validatedData['video'] = $imagePaths['video'] ?? null;
+
+        // Convert FAQ questions and answers to JSON if saving in same table
+        $validatedData['faq_questions'] = json_encode($request->faq_questions);
+        $validatedData['faq_answers'] = json_encode($request->faq_answers);
+
+
 
         $product = Product::create($validatedData);
 
@@ -105,13 +124,18 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        $templates = Template::all();
-        $attributes = Attribute::with('attribute_options')->get();
+        //$templates = Template::all();
+        //$attributes = Attribute::with('attribute_options')->get();
 
-        $product = Product::with('product_attribute_options')->find($id);
+        //$product = Product::with('product_attribute_options')->find($id);
 
-        return view('admin.product.edit', compact('templates', 'attributes', 'product'));
+        //return view('admin.product.edit', compact('templates', 'attributes', 'product'));
+
+        $product = Product::find($id);
+        $templates = Template::where("id", $product->template_id)->first();
+        return view('admin.product.edit-product-template', compact('product', 'templates'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -196,5 +220,16 @@ class ProductController extends Controller
         $product->delete();
 
         return response()->json(['success' => 'Product deleted successfully!']);
+    }
+
+
+
+
+    public function createProductTemplate(string $id)
+    {
+        $attributes = Attribute::with('attribute_options')->get();
+        $templates = Template::find($id);
+
+        return view("admin.product.create-product-template", compact('attributes', 'templates'));
     }
 }

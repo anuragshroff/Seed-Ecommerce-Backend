@@ -20,7 +20,17 @@ class Product extends Model
         'second_image',
         'third_image',
         'quantity',
-        'status'
+        'status',
+        'section_title',
+        'countdowndate',
+        'header_title',
+        'video_url',
+        'video',
+        'faq_section_title',
+        'faq_questions',
+        'faq_answers',
+        'review_images'
+
     ];
 
     public function product_attribute_options()

@@ -35,7 +35,22 @@ class ProductRequest extends FormRequest
             'third_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'quantity' => 'required|integer',
             'attribute_options' => 'nullable|array',
-            'status' => 'nullable|in:published,unpublished'
+            'status' => 'nullable|in:published,unpublished',
+            'countdowndate' => 'nullable',
+            'section_title' => 'nullable|string|max:255',
+
+            'header_title' => 'nullable|string|max:255',
+            'video_url' => 'nullable|url',
+            'video' => 'nullable|mimes:mp4,avi,wmv|max:10240', // Limit video to 10MB
+
+            'faq_questions' => 'nullable|array',
+            'faq_questions.*' => 'nullable',
+            'faq_answers' => 'nullable|array',
+            'faq_answers.*' => 'nullable|string',
+
+            'review_images' => 'nullable|array',
+            'review_images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
         ];
     }
 
@@ -82,7 +97,8 @@ class ProductRequest extends FormRequest
             'third_image.mimes' => 'The third image must be a file of type: jpeg, png, jpg, gif, svg.',
             'third_image.max' => 'The third image size cannot exceed 2MB.',
 
-            'attribute_options.array' => 'The attribute options must be an array of valid attribute IDs.'
+            'attribute_options.array' => 'The attribute options must be an array of valid attribute IDs.',
+            'section_title.max' => 'The Section Title  cannot exceed 255 characters.'
         ];
     }
 

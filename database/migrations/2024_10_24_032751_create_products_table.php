@@ -27,6 +27,24 @@ return new class extends Migration
             $table->string('second_image')->nullable();
             $table->string('third_image')->nullable();
             $table->enum('status', ['published', 'unpublished'])->default('published');
+
+
+
+
+
+            $table->string('countdowndate')->nullable();
+            $table->string('section_title')->nullable();
+
+            $table->string('header_title')->nullable();
+            $table->string('video_url')->nullable();
+            $table->string('video')->nullable();
+
+            $table->string('faq_section_title')->nullable();
+            $table->string('faq_questions')->nullable();
+            $table->string('faq_answers')->nullable();
+
+            $table->string('review_images')->nullable();
+
             $table->timestamps();
             
             // Foreign key relation

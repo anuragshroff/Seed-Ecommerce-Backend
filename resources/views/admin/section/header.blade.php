@@ -18,7 +18,7 @@
 
                     <li class="nav-item dropdown dropdown-laungauge d-none d-sm-flex visually-hidden">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="avascript:;"
-                            data-bs-toggle="dropdown"><img src="assets/images/county/02.png" width="22" alt="">
+                            data-bs-toggle="dropdown"><img src="{{asset('assets/images/county/02.png')}}" width="22" alt="">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img

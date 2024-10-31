@@ -95,6 +95,9 @@ Route::group(
                 ->name('product.destroy')
                 ->middleware('permission:Product Delete');
 
+                //create product template
+                Route::get('create-product-template/{id}',[ProductController::class,'createProductTemplate'])->name('createProductTemplate');
+
 
 
             //Access Management for roles && Permission
