@@ -49,17 +49,11 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-
-
-
         $validatedData = $request->validated();
-
-        //dd ($validatedData);
 
         $imagePaths = [];
         foreach (['featured_image', 'first_image', 'second_image', 'third_image', 'video'] as $image) {
             if ($request->hasFile($image)) {
-
                 $imagePaths[$image] = $this->uploadFile($request, $image);
             }
         }
@@ -72,9 +66,6 @@ class ProductController extends Controller
             }
         }
 
-
-
-
         $validatedData['featured_image'] = $imagePaths['featured_image'] ?? null;
         $validatedData['first_image'] = $imagePaths['first_image'] ?? null;
         $validatedData['second_image'] = $imagePaths['second_image'] ?? null;
@@ -82,18 +73,11 @@ class ProductController extends Controller
         $validatedData['review_images'] = json_encode($reviewImagePaths);
         $validatedData['video'] = $imagePaths['video'] ?? null;
 
-        // Convert FAQ questions and answers to JSON if saving in same table
+        // Convert FAQ questions and answers to JSON if saving in the same table
         $validatedData['faq_questions'] = json_encode($request->faq_questions);
         $validatedData['faq_answers'] = json_encode($request->faq_answers);
 
-
-
         $product = Product::create($validatedData);
-
-
-
-
-
 
         // Store attribute_options data using Eloquent model
         if ($request->has('attribute_options')) {
@@ -110,6 +94,7 @@ class ProductController extends Controller
 
         return redirect()->back()->with('success', 'Product created successfully!');
     }
+
 
     /**
      * Display the specified resource.
