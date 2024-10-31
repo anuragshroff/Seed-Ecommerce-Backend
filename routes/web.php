@@ -62,41 +62,48 @@ Route::group(
 
 
         // Group the routes under a middleware if authentication is required
-        
+
 
         Route::middleware(['auth:web'])->group(function () {
 
             // Permission-based access control for ProductController actions
             Route::get('product', [ProductController::class, 'index'])
                 ->name('product.index')
-                ->middleware('permission:Read');
+                ->middleware('permission:Product View');
 
             Route::get('product/create', [ProductController::class, 'create'])
                 ->name('product.create')
-                ->middleware('permission:Create');
+                ->middleware('permission:Product Create');
 
             Route::post('product', [ProductController::class, 'store'])
                 ->name('product.store')
-                ->middleware('permission:Create');
+                ->middleware('permission:Product Create');
 
             Route::get('product/{product}', [ProductController::class, 'show'])
                 ->name('product.show')
-                ->middleware('permission:allProducts');
+                ->middleware('permission:Product View');
 
             Route::get('product/{product}/edit', [ProductController::class, 'edit'])
                 ->name('product.edit')
-                ->middleware('permission:Edit');
+                ->middleware('permission:Product Edit');
 
             Route::put('product/{product}', [ProductController::class, 'update'])
                 ->name('product.update')
-                ->middleware('permission:Update');
+                ->middleware('permission:Product Update');
 
             Route::delete('product/{product}', [ProductController::class, 'destroy'])
                 ->name('product.destroy')
-                ->middleware('permission:Delete');
+                ->middleware('permission:Product Delete');
+
+
+
+            //Access Management for roles && Permission
+            Route::resource('role-user', RollUserController::class)->middleware('permission:Administration');
+            Route::resource('role-permission', RollPermissionController::class)->middleware('permission:Administration');
+
         });
 
-        
+
 
 
 
@@ -163,9 +170,5 @@ Route::group(
         Route::get('/profile-setting', [ProfileController::class, 'profileSetting'])->name('profileSetting');
         Route::post('/profile-update', [ProfileController::class, 'profileUpdate'])->name('profileUpdate');
         Route::post('/password-update', [ProfileController::class, 'passwordUpdate'])->name('passwordUpdate');
-
-        //Access Management for roles && Permission
-        Route::resource('role-user', RollUserController::class);
-        Route::resource('role-permission', RollPermissionController::class);
     }
 );

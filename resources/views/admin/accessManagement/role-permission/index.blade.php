@@ -29,17 +29,17 @@
                         @forelse ($roles as $role)
                             <tr>
 
-                                <td>{{ $role->name }}</td>
+                                <td style="width: 10%">{{ $role->name }}</td>
                                 <td>
                                     @foreach ($role->permissions as $permission)
-                                    <span class="badge bg-primary" style="font-size: 15px">{{ $permission->name }}</span>
+                                    <span class="badge bg-primary px-3 py-2 mb-2" style="font-weight: 200 !important">{{ $permission->name }}</span>
                                     @endforeach
                                 </td>
 
-                                <td>
+                                <td style="width: 10%">
                                     @if ($role->name !== 'Super Admin')
-                                    <a href="{{ route('role-permission.edit', $role->id) }}" class="btn btn-primary px-5">Edit</a>
-                                    <a href="{{ route('role-permission.edit', $role->id) }}" class="btn btn-danger px-5 mr-3">Delete</a>
+                                    <a href="{{ route('role-permission.edit', $role->id) }}" class="btn btn-primary  btn-sm">Edit</a>
+                                    <a href="{{ route('role-permission.edit', $role->id) }}" class="btn btn-danger btn-sm mr-3">Delete</a>
                                     @endif
                                 </td>
 

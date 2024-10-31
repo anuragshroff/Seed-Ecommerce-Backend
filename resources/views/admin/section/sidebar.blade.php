@@ -52,7 +52,7 @@
                     <div class="menu-title">Products</div>
                 </a>
                 <ul>
-                    @if (auth()->guard('web')->user()->can('Read'))
+                    @if (auth()->guard('web')->user()->can('Product View'))
                     <li> <a href="{{ route('product.index') }}">
                             <i class='bx bx-radio-circle'></i>
                             All Products
@@ -60,7 +60,7 @@
                     </li>
                     @endif
 
-                    @if (auth()->guard('web')->user()->can('Create'))
+                    @if (auth()->guard('web')->user()->can('Product Create'))
 
                     <li> <a href="{{ route('product.create') }}">
                             <i class='bx bx-radio-circle'></i>
@@ -239,6 +239,9 @@
             </ul>
         </li>
 
+
+        @if (auth()->guard('web')->user()->can('Administration'))
+
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><img src="{{ asset('assets/static/administration.webp') }}"
@@ -263,6 +266,8 @@
 
             </ul>
         </li>
+
+        @endif
 
 
 
