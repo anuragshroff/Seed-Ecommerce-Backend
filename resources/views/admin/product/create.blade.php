@@ -21,14 +21,25 @@
     <!--end breadcrumb-->
     <div class="row">
 
-   
 
-            <div class="col-md-12">
 
-                <div class="card">
+            <div class="row">
+
+                @foreach($templates as $item)
+
+                <div class="card col-md-5 mx-auto">
                     <div class="card-body p-4">
-                        <h5 class="mb-4">Create Product</h5>
-                       
+                        <h5 class="mb-4 text-center">{{$item->name}}</h5>
+
+                        <div>
+                           <img src="{{$item->image}}" class="img-fluid" style="height: 400px; width: 100%" />
+                        </div>
+
+                        <a href="/create-product-template/{{$item->id}}" class="mt-3 btn btn-primary w-100">Create Product Using This Template</a>
+
+                        {{--
+
+
                         <form class="row g-3" method="POST" enctype="multipart/form-data" action="{{ route('product.store') }}">
                             @csrf
                             <div class="col-md-6">
@@ -41,7 +52,7 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                        
+
                             <div class="col-md-6">
                                 <label for="code" class="form-label">Product Code</label>
                                 <div class="input-group">
@@ -52,7 +63,7 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                        
+
                             <div class="col-md-6">
                                 <label for="price" class="form-label">Price</label>
                                 <div class="input-group">
@@ -63,7 +74,7 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                        
+
                             <div class="col-md-6">
                                 <label for="previousPrice" class="form-label">Previous Price</label>
                                 <div class="input-group">
@@ -74,7 +85,7 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                        
+
                             <div class="col-md-12">
                                 <label for="product_information" class="form-label">Product Information</label>
                                 <textarea class="summernote" id="product_information" name="product_information">{{ old('product_information') }}</textarea>
@@ -82,7 +93,7 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                        
+
                             <div class="row mt-3">
                                 <div class="col-md-3">
                                     <label for="featured_image" class="form-label">Featured Image</label>
@@ -93,7 +104,7 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                        
+
                                 <div class="col-md-3">
                                     <label for="first_image" class="form-label">First Image</label>
                                     <div class="input-group">
@@ -103,7 +114,7 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                        
+
                                 <div class="col-md-3">
                                     <label for="second_image" class="form-label">Second Image</label>
                                     <div class="input-group">
@@ -113,7 +124,7 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                        
+
                                 <div class="col-md-3">
                                     <label for="third_image" class="form-label">Third Image</label>
                                     <div class="input-group">
@@ -124,7 +135,7 @@
                                     @enderror
                                 </div>
                             </div>
-                        
+
                             <div class="col-md-12">
                                 <label for="product_description" class="form-label">Product Description</label>
                                 <textarea class="summernote" id="product_description" name="product_description">{{ old('product_description') }}</textarea>
@@ -132,7 +143,7 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                        
+
                             <div class="col-md-6">
                                 <label for="template_id" class="form-label">Choose Template</label>
                                 <select id="template_id" name="template_id" class="form-select">
@@ -160,7 +171,7 @@
                             </div>
 
 
-                        
+
                             <!-- Attributes -->
                             <div class="col-md-12">
                                 <div class="card">
@@ -202,7 +213,7 @@
                                     </div>
                                 </div>
                             </div>
-                        
+
                             <div class="col-md-12">
                                 <div class="d-md-flex d-grid align-items-center gap-3">
                                     <button type="submit" class="btn btn-primary px-4">Submit</button>
@@ -210,15 +221,22 @@
                             </div>
                         </form>
 
-                        
+
+                        --}}
+
+
+
+
 
                     </div>
                 </div>
-    
+
+                @endforeach
+
             </div>
 
-       
-      
+
+
     </div>
     <!--end row-->
 

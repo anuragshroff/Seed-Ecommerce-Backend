@@ -102,9 +102,13 @@
         <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
+
+    
     <div class="col-md-12">
         <img class="img-fluid" src="{{asset($product->first_image)}}" style="border-radius: 5px;height: 200px;" />
     </div>
+
+
     <div class="col-md-12">
         <label for="first_image" class="form-label">Product Image</label>
         <div class="input-group">

@@ -34,7 +34,7 @@
                             <td>{{$item->name}}</td>
                             <td>
                                 @foreach($item->attribute_options as $data)
-                                <span class="badge bg-dark" style="font-size: 12px">{{$data->name}}</span>
+                                <span class="badge bg-dark px-4 py-2" style="font-weight: 200 !important">{{$data->name}}</span>
                                 @endforeach
                             </td>
                             <td>

@@ -11,8 +11,8 @@
     </div>
     <!--navigation-->
     <ul class="metismenu" id="menu">
-        <li>
-            <a href="{{ route('dashboard') }}">
+        <li class="{{ setSidebarActive(['dashboard']) }}">
+            <a  href="{{ route('dashboard') }}">
                 <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
                         style="width: 30px; height: 30px" />
                 </div>
@@ -21,7 +21,7 @@
 
         </li>
 
-        <li>
+        <li class="{{ setSidebarActive(['pos']) }}">
             <a href="{{ route('pos.index') }}">
                 <div class="parent-icon"><img src="{{ asset('assets/static/pos.webp') }}"
                         style="width: 30px; height: 30px" />
@@ -31,7 +31,7 @@
 
         </li>
 
-        <li>
+        <li class="{{ setSidebarActive(['order']) }}">
             <a href="{{ route('order') }}">
                 <div class="parent-icon"><img src="{{ asset('assets/static/orders.webp') }}"
                         style="width: 30px; height: 30px" />
@@ -44,7 +44,7 @@
 
 
 
-            <li>
+            <li class="{{ setSidebarActive(['product.*']) }}">
                 <a href="javascript:;" class="has-arrow">
                     <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
                             style="width: 30px; height: 30px" />
@@ -75,7 +75,7 @@
 
 
 
-        <li>
+        <li class="{{ setSidebarActive(['template.*']) }}">
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><img src="{{ asset('assets/static/template.webp') }}"
                         style="width: 30px; height: 30px" />
@@ -100,7 +100,7 @@
 
 
 
-        <li>
+        <li class="{{ setSidebarActive(['attribute.*', 'editAttribute']) }}">
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
                         style="width: 30px; height: 30px" />
@@ -211,7 +211,7 @@
                 </div>
                 <div class="menu-title">Marketing</div>
             </a>
-            
+
         </li>
 
         <li>

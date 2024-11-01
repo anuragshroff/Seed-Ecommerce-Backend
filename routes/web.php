@@ -59,6 +59,9 @@ Route::group(
         //product
         //Route::resource('product', ProductController::class);
 
+        Route::delete('/product/{product}/review-image', [ProductController::class, 'deleteReviewImage'])->name('product.deleteReviewImage');
+
+
 
 
         // Group the routes under a middleware if authentication is required

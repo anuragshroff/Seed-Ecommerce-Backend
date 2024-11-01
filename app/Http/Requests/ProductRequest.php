@@ -47,6 +47,7 @@ class ProductRequest extends FormRequest
             'faq_questions.*' => 'nullable',
             'faq_answers' => 'nullable|array',
             'faq_answers.*' => 'nullable|string',
+            'faq_section_title' => 'nullable|string',
 
             'review_images' => 'nullable|array',
             'review_images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -60,7 +61,7 @@ class ProductRequest extends FormRequest
         return [
             'name.required' => 'The product name is required.',
             'name.max' => 'The product name cannot exceed 255 characters.',
-            
+
             'code.required' => 'The product code is required.',
             'code.max' => 'The product code cannot exceed 255 characters.',
             'code.unique' => 'The product code must be unique. A product with this code already exists.',
@@ -76,8 +77,8 @@ class ProductRequest extends FormRequest
             'quantity.required' => 'The quantity is required.',
             'quantity.numeric' => 'The quantity must be a number.',
 
-           
-            
+
+
 
 
             'featured_image.required' => 'Featured image is required',

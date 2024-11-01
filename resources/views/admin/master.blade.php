@@ -77,11 +77,11 @@
 
     <!-- search modal -->
     {{--
-    
+
      @include('admin.section.search-modal')
-    
+
     --}}
-   
+
 
 
     <!--start switcher-->
@@ -174,7 +174,7 @@
     <script>
         function success_noti(message) {
             Lobibox.notify('success', {
-                pauseDelayOnHover: true, 
+                pauseDelayOnHover: true,
                 width: 300,
                 size: 'mini',
                 continueDelayOnInactiveTab: false,
@@ -187,7 +187,7 @@
 
         function error_noti(message) {
         Lobibox.notify('error', {
-            pauseDelayOnHover: true, 
+            pauseDelayOnHover: true,
             width: 300,
             size: 'mini',
             continueDelayOnInactiveTab: false,
