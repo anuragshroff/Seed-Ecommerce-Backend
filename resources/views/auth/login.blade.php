@@ -1,3 +1,5 @@
+{{--
+
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -45,3 +47,73 @@
         </div>
     </form>
 </x-guest-layout>
+
+
+--}}
+
+@extends('auth.master')
+
+@section('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card mb-0" style="border-radius: 20px">
+                    <div class="card-body">
+                        <div class="p-5">
+                            <div class="mb-3 text-center">
+                                <img src="{{ asset('assets/images/logo-icon.png') }}" width="60" alt="" />
+                            </div>
+                            <div class="text-center mb-4">
+                                <h5 class="">Welcome To E-POS-PRO</h5>
+                                <p class="mb-0">Sign in</p>
+                            </div>
+                            <div class="form-body">
+                                <form class="row g-3" method="POST" action="{{ route('login') }}">
+                                    @csrf
+
+                                    <div class="col-12">
+                                        <label for="inputEmailAddress" class="form-label">Enter your email
+                                            address</label>
+                                        <input type="email" class="form-control form-control-lg" name="email"
+                                            value="{{ old('email') }}" id="inputEmailAddress" required>
+                                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="inputChoosePassword" class="form-label">Enter your
+                                            password</label>
+                                        <div class="input-group" id="show_hide_password">
+                                            <input type="password" class="form-control form-control-lg border-end-0"
+                                                name="password" value="{{ old('password') }}" id="inputChoosePassword"> <a
+                                                href="javascript:;" class="input-group-text bg-transparent" required><i
+                                                    class='bx bx-hide'></i></a>
+                                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+                                            <label class="form-check-label" for="flexSwitchCheckChecked">Remember Me</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 text-end"><a href="{{ route('password.request') }}">Forgot Password
+                                            ?</a>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="d-grid">
+                                            <button type="submit" class="btn"
+                                                style="background: #00dc82; color: white">Sign in</button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end row-->
+    </div>
+@endsection
