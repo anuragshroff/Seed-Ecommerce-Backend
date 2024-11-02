@@ -12,3 +12,4 @@ use App\Http\Controllers\admin\ProductController;
 
 Route::get('/product/{id}', [ProductController::class, 'specificProduct']);
 Route::get('/products/all/', [ProductController::class, 'allProduct']);
+Route::get('/products/setting/', [ProductController::class, 'setting']);

@@ -7,6 +7,7 @@ use App\Http\Requests\ProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Attribute;
 use App\Models\Product;
+use App\Models\Setting;
 use App\Models\ProductAttributeOption;
 use App\Models\Template;
 use App\Traits\FileUploadTrait;
@@ -40,6 +41,13 @@ class ProductController extends Controller
 
         $all_products = Product::latest()->get();
       return  $all_products;
+
+    }
+    public function setting()
+    {
+        $setting=Setting::first();
+
+      return  $setting;
 
     }
 
