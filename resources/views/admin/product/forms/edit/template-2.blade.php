@@ -188,6 +188,18 @@
     }
 </style>
 
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
+
 <form class="row g-3" method="POST" enctype="multipart/form-data" action="{{ route('product.update', $product->id) }}">
     @csrf
     @method('PUT')
@@ -243,7 +255,7 @@
 
     <div class="col-md-12" id="video_url_input" style="display: none;">
         <label for="video_url" class="form-label">Video URL</label>
-        <input type="text" name="video_url" class="form-control" id="video_url" value="{{ old('video_url') }}">
+        <input type="text" name="video_url" class="form-control" id="video_url" value="{{ old('video_url', $product->video_url) }}">
         @error('video_url')
             <span class="text-danger">{{ $message }}</span>
         @enderror
@@ -335,7 +347,7 @@
                     <input type="text" class="form-control" name="faq_questions[]"
                         placeholder="Enter FAQ Question" value="{{ old('faq_questions.' . $index, $question) }}">
                 </div>
-                <div class="col-md-12 mt-2">
+                <div class="col-md-12 mt-2 mb-2">
                     <label class="form-label">FAQ Answer</label>
                     <textarea class="form-control" name="faq_answers[]" placeholder="Enter FAQ Answer">{{ old('faq_answers.' . $index, $faqAnswers[$index] ?? '') }}</textarea>
                 </div>
@@ -446,7 +458,7 @@
     </div>
 
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Update</button>
 
 
 </form>

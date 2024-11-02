@@ -24,10 +24,6 @@ class ProductController extends Controller
     use FileUploadTrait;
 
 
-
-
-
-
     public function specificProduct($id)
     {
         $product = Product::where('id',$id)->get();
@@ -75,8 +71,9 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
+        //dd($request->all());
         $validatedData = $request->validated();
-
+      
         
 
         $imagePaths = [];
@@ -201,6 +198,7 @@ class ProductController extends Controller
     public function update(UpdateProductRequest $request, Product $product)
     {
         $validatedData = $request->validated();
+
         $imagePaths = [];
 
         // Handle single images (featured_image, first_image, second_image, third_image)

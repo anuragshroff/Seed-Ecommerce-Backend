@@ -39,7 +39,7 @@
 
             <div class="card col-md-6">
                 <div class="card-body template-form">
-                @include( 'admin.product.forms.edit.'.$templates->id )
+                @include( 'admin.product.forms.edit.'.'template-'.$templates->id )
 
                 </div>
             </div>

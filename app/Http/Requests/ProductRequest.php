@@ -50,7 +50,7 @@ class ProductRequest extends FormRequest
             'faq_section_title' => 'nullable|string',
 
             'review_images' => 'nullable|array',
-            'review_images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'review_images.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
 
             'slug' => 'nullable|string',
 

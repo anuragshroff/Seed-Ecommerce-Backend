@@ -1,3 +1,14 @@
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
 <form class="row g-3" method="POST" enctype="multipart/form-data" action="{{ route('product.store') }}">
     @csrf
     <input type="hidden" name="template_id" value="{{$templates->id}}" />
@@ -166,6 +177,11 @@
             <div class="col-md-12">
                 <label class="form-label">Review Image</label>
                 <input type="file" class="form-control" name="review_images[]" accept="image/*">
+
+                @error('review_images')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+
             </div>
         </div>
     </div>
