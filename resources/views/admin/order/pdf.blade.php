@@ -104,13 +104,20 @@
         <div class="row" style="padding: 20px">
             <div class="col-lg-12">
                 <div class="card">
+                    <div class="card-header">
+                       
+                        <img src="data:image/webp;base64,{{ base64_encode(file_get_contents(public_path('uploads/softexel-logo.webp'))) }}" style="width: 200px; height: 40px; margin-left: 20px" />
+
+
+
+                    </div>
                     <div class="card-body">
                         
                         <div class="row">
                             <div class="col-12">
                                 <h5><b>Order Details :</b></h5>
-                                <span class="text-muted">Transaction Id :</span><br>
-                                <span class="text-muted">Order Id :</span> {{$order->invoice_no}}<br>
+                                <span class="text-muted">Transaction Id : {{$order->invoice_no}}</span><br>
+                                <span class="text-muted">Order Id :</span> {{$order->id}}<br>
                                 <span class="text-muted">Order Date :</span> {{$order->date}}<br>
                                 <span class="text-muted">Payment Status :</span> Cash on Delivery
                                 <div class="badge badge-danger">Unpaid</div><br>

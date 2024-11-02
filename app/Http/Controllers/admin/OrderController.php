@@ -6,8 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
-use setasign\Fpdi\Fpdi;
 use Carbon\Carbon;
+use setasign\Fpdi\Fpdi;
+use setasign\Fpdi\PdfParser\StreamReader;
 
 
 
@@ -27,7 +28,7 @@ class OrderController extends Controller
         $pick_up_amount = Order::where('status', 'Pick Up')->sum('amount');
         $on_the_way_amount = Order::where('status', 'On The Way')->sum('amount');
 
-        return view('admin.order.index', compact('orders','pending_amount', 'delivered_amount', 'cancelled_amount', 'returned_amount', 'confirmed_amount', 'processing_amount', 'pick_up_amount', 'on_the_way_amount' ));
+        return view('admin.order.index', compact('orders', 'pending_amount', 'delivered_amount', 'cancelled_amount', 'returned_amount', 'confirmed_amount', 'processing_amount', 'pick_up_amount', 'on_the_way_amount'));
     }
 
     public function orderFilter(Request $request)
@@ -80,7 +81,7 @@ class OrderController extends Controller
         $pick_up_amount = Order::where('status', 'Pick Up')->sum('amount');
         $on_the_way_amount = Order::where('status', 'On The Way')->sum('amount');
 
-        return view('admin.order.index', compact('orders','pending_amount', 'delivered_amount', 'cancelled_amount', 'returned_amount', 'confirmed_amount', 'processing_amount', 'pick_up_amount', 'on_the_way_amount' ));
+        return view('admin.order.index', compact('orders', 'pending_amount', 'delivered_amount', 'cancelled_amount', 'returned_amount', 'confirmed_amount', 'processing_amount', 'pick_up_amount', 'on_the_way_amount'));
     }
 
     public function updateStatus(Request $request, $id)
@@ -146,7 +147,7 @@ class OrderController extends Controller
     }
 
 
-
+    /*
     public function downloadBulkPdf(Request $request)
     {
 
@@ -159,6 +160,9 @@ class OrderController extends Controller
             //$order = Order::with(['products', 'customers', 'order_attributes.attributes_option', 'order_attributes.attributes'])->findOrFail($id);
 
             $order = Order::with(['order_attributes.products', 'order_attributes.attributes', 'order_attributes.attributes_option'])->findOrFail($id);
+
+            dd($order->toJson(JSON_PRETTY_PRINT));
+
 
             // Generate the PDF for the order
             $pdf = PDF::loadView('admin.order.pdf', compact('order'));
@@ -173,5 +177,48 @@ class OrderController extends Controller
 
         // Return a view with download links
         return view('admin.order.bulkpdf', compact('invoiceUrls'));
+    } */
+
+
+    public function downloadBulkPdf(Request $request)
+    {
+        $ids = $request->input('ids', []);
+        $ids = json_decode($ids);
+        $pdfPaths = [];
+
+        foreach ($ids as $id) {
+            $order = Order::with(['order_attributes.products', 'order_attributes.attributes', 'order_attributes.attributes_option'])->findOrFail($id);
+
+            // Generate the PDF for the order
+            $pdf = PDF::loadView('admin.order.pdf', compact('order'));
+
+            // Save the PDF to a temporary location
+            $pdfPath = public_path('invoices/order_invoice_' . $order->invoice_no . '.pdf');
+            $pdf->save($pdfPath);
+
+            // Add the path to the array
+            $pdfPaths[] = $pdfPath;
+        }
+
+        // Create a new merged PDF using FPDI
+        $mergedPdf = new Fpdi();
+
+        // Iterate over the paths and add each PDF to the merged PDF
+        foreach ($pdfPaths as $path) {
+            $pageCount = $mergedPdf->setSourceFile($path);
+            for ($i = 1; $i <= $pageCount; $i++) {
+                $templateId = $mergedPdf->importPage($i);
+                $size = $mergedPdf->getTemplateSize($templateId);
+                $mergedPdf->AddPage($size['orientation'], [$size['width'], $size['height']]);
+                $mergedPdf->useTemplate($templateId);
+            }
+        }
+
+        // Set the output path for the merged PDF
+        $mergedPdfPath = public_path('invoices/merged_order_invoice.pdf');
+        $mergedPdf->Output($mergedPdfPath, 'F');
+
+        // Return a download link for the merged PDF
+        return response()->download($mergedPdfPath)->deleteFileAfterSend(true);
     }
 }

@@ -302,6 +302,7 @@
                                 @foreach ($item->order_attributes as $data)
                                   
                                    {{ $data->products->code }}
+                                   <p></p>
                                   
                                @endforeach
 
@@ -327,6 +328,7 @@
                                 @foreach ($item->order_attributes as $data)
                                    <img src="{{asset($data->products->featured_image)}}" style="width: 50px; height: 50px; border-radius: 5px;" />
                                    {{ $data->products->name }}
+                                   <p></p>
                                   
                                @endforeach
 

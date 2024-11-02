@@ -167,21 +167,21 @@ Route::group(
 
 
             //Report
-            Route::get('/report', [ReportController::class, 'report'])->name('report')->middleware('permission:Report Order Report');
-            Route::get('/sale-report', [ReportController::class, 'saleReport'])->name('saleReport')->middleware('permission:Report Sale Report');
-            Route::get('/order-report-pdf', [ReportController::class, 'orderReportPdf'])->name('orderReportPdf')->middleware('permission:Report Order Report');
+            Route::get('/report', [ReportController::class, 'report'])->name('report')->middleware('permission:Order Report');
+            Route::get('/sale-report', [ReportController::class, 'saleReport'])->name('saleReport')->middleware('permission:Sale Report');
+            Route::get('/order-report-pdf', [ReportController::class, 'orderReportPdf'])->name('orderReportPdf')->middleware('permission:Order Report');
 
             Route::get('report-filter', [ReportController::class, 'reportFilter'])->name('reportFilter');
             Route::get('sale-filter', [ReportController::class, 'saleFilter'])->name('saleFilter');
 
 
             //Stock Inventory
-            Route::get('/stock', [InventoryController::class, 'stock'])->name('stock')->middleware('permission:Inventory Stock');
-            Route::get('/stock-out-product', [InventoryController::class, 'stockOutProduct'])->name('stockOutProducts')->middleware('permission:Inventory Stock Out Products');
-            Route::get('/upcoming-stock-out-product', [InventoryController::class, 'upcomingStockOut'])->name('upcomingStockOutProducts')->middleware('permission:Inventory Upcoming Stock Out Products');
+            Route::get('/stock', [InventoryController::class, 'stock'])->name('stock')->middleware('permission:Stock');
+            Route::get('/stock-out-product', [InventoryController::class, 'stockOutProduct'])->name('stockOutProducts')->middleware('permission:Stock Out Products');
+            Route::get('/upcoming-stock-out-product', [InventoryController::class, 'upcomingStockOut'])->name('upcomingStockOutProducts')->middleware('permission:Upcoming Stock Out Products');
 
             //Customer Info
-            Route::get('/customer-info', [CustomerInfoController::class, 'customerInfo'])->name('customerInfo')->middleware('permission:Customer Customer');
+            Route::get('/customer-info', [CustomerInfoController::class, 'customerInfo'])->name('customerInfo')->middleware('permission:Customer View');
 
 
             //Api Setting
@@ -190,13 +190,13 @@ Route::group(
             Route::post('/api-store', [Apicontroller::class, 'apiStore'])->name('api.store');
 
             //Marketing  
-            Route::get('/marketing', [GeneralController::class, 'marketing'])->name('marketing')->middleware('permission:Marketing Marketing');
+            Route::get('/marketing', [GeneralController::class, 'marketing'])->name('marketing')->middleware('permission:Marketing View');
 
             //General Setting
-            Route::get('/general-setting', [GeneralController::class, 'generalSetting'])->name('generalSetting')->middleware('permission:Setting General Setting');
-            Route::post('/general-setting/store', [GeneralController::class, 'store'])->name('generalSetting.store')->middleware('permission:Setting General Setting');
-            Route::get('/media', [GeneralController::class, 'media'])->name('media')->middleware('permission:Setting General Media');
-            Route::post('/upload-media', [GeneralController::class, 'uploadMedia'])->name('uploadMedia')->middleware('permission:Setting General Media');
+            Route::get('/general-setting', [GeneralController::class, 'generalSetting'])->name('generalSetting')->middleware('permission:General Setting');
+            Route::post('/general-setting/store', [GeneralController::class, 'store'])->name('generalSetting.store')->middleware('permission:General Setting');
+            Route::get('/media', [GeneralController::class, 'media'])->name('media')->middleware('permission:Media');
+            Route::post('/upload-media', [GeneralController::class, 'uploadMedia'])->name('uploadMedia')->middleware('permission:Media');
 
 
 
@@ -204,26 +204,6 @@ Route::group(
             Route::resource('role-user', RollUserController::class)->middleware('permission:Administration');
             Route::resource('role-permission', RollPermissionController::class)->middleware('permission:Administration');
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -221,7 +221,7 @@
         </li>
 
         
-        @if (canAccess(['Customer']))
+        @if (canAccess(['Customer View']))
 
         <li class="{{ setSidebarActive(['customerInfo']) }}">
             <a href="{{ route('customerInfo') }}">
@@ -253,7 +253,7 @@
             </ul>
         </li>
 
-        @if (canAccess(['Marketing']))
+        @if (canAccess(['Marketing View']))
 
         <li class="{{ setSidebarActive(['marketing']) }}">
             <a href={{route('marketing')}}>
