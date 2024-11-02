@@ -52,6 +52,8 @@ class ProductRequest extends FormRequest
             'review_images' => 'nullable|array',
             'review_images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
+            'slug' => 'nullable|string',
+
         ];
     }
 
