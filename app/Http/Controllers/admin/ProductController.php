@@ -69,6 +69,8 @@ class ProductController extends Controller
     {
         $validatedData = $request->validated();
 
+        
+
         $imagePaths = [];
         foreach (['featured_image', 'first_image', 'second_image', 'third_image', 'video'] as $image) {
             if ($request->hasFile($image)) {
