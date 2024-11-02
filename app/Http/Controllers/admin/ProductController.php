@@ -27,6 +27,13 @@ class ProductController extends Controller
 
 
 
+    public function api($product)
+    {
+        $product = Product::where('id',$product)->get();
+
+        return $product;
+    }
+
     public function index()
     {
         $all_products = Product::latest()->get();
