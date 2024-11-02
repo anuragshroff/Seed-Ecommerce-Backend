@@ -35,18 +35,9 @@ Route::group(
     ['middleware' => ['auth', 'verified']],
     function () {
 
-        Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
-        //order
-        Route::get('/order', [OrderController::class, 'order'])->name('order');
-        Route::post('/orders/{id}/update-status', [OrderController::class, 'updateStatus'])->name('order.updateStatus');
-        Route::get('/order-filter', [OrderController::class, 'orderFilter'])->name('order.filter');
-        Route::get('/order-view/{id}', [OrderController::class, 'orderView'])->name('order.view');
-        Route::get('/order/print/{id}', [OrderController::class, 'print'])->name('order.print');
-        Route::get('/order/{id}/download-pdf', [OrderController::class, 'downloadPDF'])->name('order.downloadPDF');
-        Route::get('/order/{id}/delete', [OrderController::class, 'delete'])->name('order.delete');
-        Route::post('/orders/bulk-delete', [OrderController::class, 'bulkDelete'])->name('order.bulkDelete');
-        Route::get('/download-bulk-pdf', [OrderController::class, 'downloadBulkPdf'])->name('download.bulkpdf');
+
+
 
 
         //pos
@@ -68,6 +59,26 @@ Route::group(
 
 
         Route::middleware(['auth:web'])->group(function () {
+
+            //Dashboard
+
+            Route::get('/dashboard', [DashboardController::class, 'dashboard'])
+                ->name('dashboard')
+                ->middleware('permission:Dashboard View');
+
+
+            //order
+            Route::get('/order', [OrderController::class, 'order'])->name('order');
+            Route::post('/orders/{id}/update-status', [OrderController::class, 'updateStatus'])->name('order.updateStatus');
+            Route::get('/order-filter', [OrderController::class, 'orderFilter'])->name('order.filter');
+            Route::get('/order-view/{id}', [OrderController::class, 'orderView'])->name('order.view');
+            Route::get('/order/print/{id}', [OrderController::class, 'print'])->name('order.print');
+            Route::get('/order/{id}/download-pdf', [OrderController::class, 'downloadPDF'])->name('order.downloadPDF');
+            Route::get('/order/{id}/delete', [OrderController::class, 'delete'])->name('order.delete');
+            Route::post('/orders/bulk-delete', [OrderController::class, 'bulkDelete'])->name('order.bulkDelete');
+            Route::get('/download-bulk-pdf', [OrderController::class, 'downloadBulkPdf'])->name('download.bulkpdf');
+
+
 
             //Product  Permission-based access control for ProductController actions
             Route::get('product', [ProductController::class, 'index'])
@@ -98,15 +109,14 @@ Route::group(
                 ->name('product.destroy')
                 ->middleware('permission:Product Delete');
 
-                //create product template
-                Route::get('create-product-template/{id}',[ProductController::class,'createProductTemplate'])->name('createProductTemplate');
+            //create product template
+            Route::get('create-product-template/{id}', [ProductController::class, 'createProductTemplate'])->name('createProductTemplate');
 
 
 
             //Access Management for roles && Permission
             Route::resource('role-user', RollUserController::class)->middleware('permission:Administration');
             Route::resource('role-permission', RollPermissionController::class)->middleware('permission:Administration');
-
         });
 
 

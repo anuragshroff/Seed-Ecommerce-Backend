@@ -42,14 +42,16 @@
         </li>
 
 
-
+            @if (canAccess(['Product View']))
 
             <li class="{{ setSidebarActive(['product.*']) }}">
                 <a href="javascript:;" class="has-arrow">
                     <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
                             style="width: 30px; height: 30px" />
                     </div>
+                   
                     <div class="menu-title">Products</div>
+                    
                 </a>
                 <ul>
                     @if (auth()->guard('web')->user()->can('Product View'))
@@ -72,6 +74,8 @@
 
                 </ul>
             </li>
+
+            @endif
 
 
 
