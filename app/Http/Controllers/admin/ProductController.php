@@ -7,6 +7,7 @@ use App\Http\Requests\ProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Attribute;
 use App\Models\Product;
+use App\Models\Setting;
 use App\Models\ProductAttributeOption;
 use App\Models\Template;
 use App\Traits\FileUploadTrait;
@@ -24,6 +25,31 @@ class ProductController extends Controller
 
 
 
+
+
+
+    public function specificProduct($id)
+    {
+        $product = Product::where('id',$id)->get();
+
+        return $product;
+    }
+
+
+    public function allProduct()
+    {
+
+        $all_products = Product::latest()->get();
+      return  $all_products;
+
+    }
+    public function setting()
+    {
+        $setting=Setting::first();
+
+      return  $setting;
+
+    }
 
 
 
@@ -51,10 +77,12 @@ class ProductController extends Controller
     {
         $validatedData = $request->validated();
 
+        
+
         $imagePaths = [];
         foreach (['featured_image', 'first_image', 'second_image', 'third_image', 'video'] as $image) {
             if ($request->hasFile($image)) {
-                $imagePaths[$image] = $this->uploadFile($request, $image);
+                $imagePaths[$image] = asset($this->uploadFile($request, $image));
             }
         }
 
@@ -62,7 +90,7 @@ class ProductController extends Controller
         $reviewImagePaths = [];
         if ($request->hasFile('review_images')) {
             foreach ($request->file('review_images') as $reviewImage) {
-                $reviewImagePaths[] = $this->uploadFile($request, $reviewImage);
+                $reviewImagePaths[] = asset($this->uploadFile($request, $reviewImage));
             }
         }
 
@@ -183,7 +211,7 @@ class ProductController extends Controller
                     $this->deleteOldFile($product->{$image});
                 }
                 // Upload the new file
-                $imagePaths[$image] = $this->uploadFile($request, $image);
+                $imagePaths[$image] = asset($this->uploadFile($request, $image));
             }
         }
 

@@ -30,7 +30,7 @@ Route::get('/', function () {
 }); */
 
 require __DIR__ . '/auth.php';
-
+// Route::get('api/product/{product}', [ProductController::class, 'api']);
 Route::group(
     ['middleware' => ['auth', 'verified']],
     function () {
