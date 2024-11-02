@@ -11,6 +11,9 @@
     </div>
     <!--navigation-->
     <ul class="metismenu" id="menu">
+
+        @if (canAccess(['Dashboard View']))
+
         <li class="{{ setSidebarActive(['dashboard']) }}">
             <a  href="{{ route('dashboard') }}">
                 <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
@@ -20,6 +23,9 @@
             </a>
 
         </li>
+        @endif
+
+        @if (canAccess(['Pos View']))
 
         <li class="{{ setSidebarActive(['pos']) }}">
             <a href="{{ route('pos.index') }}">
@@ -31,6 +37,10 @@
 
         </li>
 
+        @endif
+
+        @if (canAccess(['Order View']))
+
         <li class="{{ setSidebarActive(['order']) }}">
             <a href="{{ route('order') }}">
                 <div class="parent-icon"><img src="{{ asset('assets/static/orders.webp') }}"
@@ -40,6 +50,8 @@
             </a>
 
         </li>
+
+        @endif
 
 
             @if (canAccess(['Product View']))
@@ -77,7 +89,7 @@
 
             @endif
 
-
+        @if (canAccess(['Template View']))
 
         <li class="{{ setSidebarActive(['template.*']) }}">
             <a href="javascript:;" class="has-arrow">
@@ -101,6 +113,10 @@
 
             </ul>
         </li>
+
+        @endif
+
+        @if (canAccess(['Attribute View']))
 
 
 
@@ -127,6 +143,11 @@
             </ul>
         </li>
 
+        @endif
+
+
+      
+
         <li class="{{ setSidebarActive(['report', 'saleReport', 'orderReportPdf', 'reportFilter', 'saleFilter']) }}">
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><img src="{{ asset('assets/static/reports.webp') }}"
@@ -135,17 +156,24 @@
                 <div class="menu-title">Report</div>
             </a>
             <ul>
+                @if (canAccess(['Order Report']))
                 <li> <a href="{{ route('report') }}">
                         <i class='bx bx-radio-circle'></i>
                         Order Report
                     </a>
                 </li>
+                @endif
+
+
+                @if (canAccess(['Sale Report']))
 
                 <li> <a href="{{ route('saleReport') }}">
                         <i class='bx bx-radio-circle'></i>
                         Sale Report
                     </a>
                 </li>
+
+                @endif
 
             </ul>
         </li>
@@ -158,11 +186,17 @@
                 <div class="menu-title">Inventory</div>
             </a>
             <ul>
+                @if (canAccess(['Stock']))
+
                 <li> <a href="{{ route('stock') }}">
                         <i class='bx bx-radio-circle'></i>
                         Stock
                     </a>
                 </li>
+
+                @endif
+
+                @if (canAccess(['Stock Out Products']))
 
                 <li> <a href="{{ route('stockOutProducts') }}">
                         <i class='bx bx-radio-circle'></i>
@@ -170,15 +204,24 @@
                     </a>
                 </li>
 
+                @endif
+
+                @if (canAccess(['Upcoming Stock Out Products']))
+
                 <li> <a href="{{ route('upcomingStockOutProducts') }}">
                         <i class='bx bx-radio-circle'></i>
                         Upcoming Stock Out Products
                     </a>
                 </li>
 
+                @endif
+
 
             </ul>
         </li>
+
+        
+        @if (canAccess(['Customer']))
 
         <li class="{{ setSidebarActive(['customerInfo']) }}">
             <a href="{{ route('customerInfo') }}">
@@ -189,6 +232,8 @@
             </a>
 
         </li>
+
+        @endif
 
         <li class="{{ setSidebarActive(['couriarApi']) }}">
             <a href="javascript:;" class="has-arrow">
@@ -208,6 +253,8 @@
             </ul>
         </li>
 
+        @if (canAccess(['Marketing']))
+
         <li class="{{ setSidebarActive(['marketing']) }}">
             <a href={{route('marketing')}}>
                 <div class="parent-icon"><img src="{{ asset('assets/static/marketing.webp') }}"
@@ -218,6 +265,8 @@
 
         </li>
 
+        @endif
+
         <li class="{{ setSidebarActive(['generalSetting', 'media']) }}">
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
@@ -226,13 +275,18 @@
                 <div class="menu-title">Settings</div>
             </a>
             <ul>
+                @if (canAccess(['General Setting']))
+
                 <li> <a href="{{ route('generalSetting') }}">
                         <i class='bx bx-radio-circle'></i>
                         General Settings
                     </a>
                 </li>
 
+                @endif
 
+
+                @if (canAccess(['Media']))
 
                 <li> <a href="{{ route('media') }}">
                         <i class='bx bx-radio-circle'></i>
@@ -240,11 +294,14 @@
                     </a>
                 </li>
 
+                @endif
+
             </ul>
         </li>
 
 
-        @if (auth()->guard('web')->user()->can('Administration'))
+
+        @if (canAccess(['Administration']))
 
         <li>
             <a href="javascript:;" class="has-arrow">
@@ -272,6 +329,8 @@
         </li>
 
         @endif
+
+     
 
 
 

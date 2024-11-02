@@ -147,6 +147,58 @@ Route::group(
                 ->middleware('permission:Template Delete');
 
 
+            //Attribute
+
+            Route::get('/attribute', [AttributeController::class, 'attribute'])->name('attribute')->middleware('permission:Attribute View');
+            Route::get('/create-attribute', [AttributeController::class, 'createAttribute'])->name('createAttribute')->middleware('permission:Attribute Create');
+            Route::post('/attribute-store', [AttributeController::class, 'attributeStore'])->name('attributeStore')->middleware('permission:Attribute Create');
+            Route::get('/edit/attribute/{id}', [AttributeController::class, 'editAttribute'])->name('editAttribute')->middleware('permission:Attribute Edit');
+            Route::post('/update/attribute', [AttributeController::class, 'updateAttribute'])->name('updateAttribute')->middleware('permission:Attribute Update');
+            Route::get('/delete/attribute/{id}', [AttributeController::class, 'deleteAttribute'])->name('deleteAttribute')->middleware('permission:Attribute Delete');
+
+
+            //Attribute Option
+
+            Route::get('/create/attribute/option/{id}', [AttributeOptionController::class, 'createAtributeOption'])->name('createAtributeOption')->middleware('permission:Attribute Create');
+            Route::post('/attribute/option/store', [AttributeOptionController::class, 'storeAtributeOption'])->name('storeAtributeOption')->middleware('permission:Attribute Create');
+            Route::get('/attribute/option/edit/{id}', [AttributeOptionController::class, 'attributeOptionEdit'])->name('attributeOptionEdit')->middleware('permission:Attribute Edit');
+            Route::post('/attribute/option/update', [AttributeOptionController::class, 'attributeOptionUpdate'])->name('attributeOptionUpdate')->middleware('permission:Attribute Update');
+            Route::get('/attribute/option/delete/{id}', [AttributeOptionController::class, 'attributeOptionDelete'])->name('attributeOptionDelete')->middleware('permission:Attribute Delete');
+
+
+            //Report
+            Route::get('/report', [ReportController::class, 'report'])->name('report')->middleware('permission:Report Order Report');
+            Route::get('/sale-report', [ReportController::class, 'saleReport'])->name('saleReport')->middleware('permission:Report Sale Report');
+            Route::get('/order-report-pdf', [ReportController::class, 'orderReportPdf'])->name('orderReportPdf')->middleware('permission:Report Order Report');
+
+            Route::get('report-filter', [ReportController::class, 'reportFilter'])->name('reportFilter');
+            Route::get('sale-filter', [ReportController::class, 'saleFilter'])->name('saleFilter');
+
+
+            //Stock Inventory
+            Route::get('/stock', [InventoryController::class, 'stock'])->name('stock')->middleware('permission:Inventory Stock');
+            Route::get('/stock-out-product', [InventoryController::class, 'stockOutProduct'])->name('stockOutProducts')->middleware('permission:Inventory Stock Out Products');
+            Route::get('/upcoming-stock-out-product', [InventoryController::class, 'upcomingStockOut'])->name('upcomingStockOutProducts')->middleware('permission:Inventory Upcoming Stock Out Products');
+
+            //Customer Info
+            Route::get('/customer-info', [CustomerInfoController::class, 'customerInfo'])->name('customerInfo')->middleware('permission:Customer Customer');
+
+
+            //Api Setting
+            Route::get('/couriar-api', [Apicontroller::class, 'couriarApi'])->name('couriarApi');
+            Route::get('/send-steadfast/{id}', [ApiController::class, 'sendSteadfast'])->name('sendSteadfast');
+            Route::post('/api-store', [Apicontroller::class, 'apiStore'])->name('api.store');
+
+            //Marketing  
+            Route::get('/marketing', [GeneralController::class, 'marketing'])->name('marketing')->middleware('permission:Marketing Marketing');
+
+            //General Setting
+            Route::get('/general-setting', [GeneralController::class, 'generalSetting'])->name('generalSetting')->middleware('permission:Setting General Setting');
+            Route::post('/general-setting/store', [GeneralController::class, 'store'])->name('generalSetting.store')->middleware('permission:Setting General Setting');
+            Route::get('/media', [GeneralController::class, 'media'])->name('media')->middleware('permission:Setting General Media');
+            Route::post('/upload-media', [GeneralController::class, 'uploadMedia'])->name('uploadMedia')->middleware('permission:Setting General Media');
+
+
 
             //Access Management for roles && Permission
             Route::resource('role-user', RollUserController::class)->middleware('permission:Administration');
@@ -154,54 +206,27 @@ Route::group(
         });
 
 
-        //Attribute
-
-        Route::get('/attribute', [AttributeController::class, 'attribute'])->name('attribute');
-        Route::get('/create-attribute', [AttributeController::class, 'createAttribute'])->name('createAttribute');
-        Route::post('/attribute-store', [AttributeController::class, 'attributeStore'])->name('attributeStore');
-        Route::get('/edit/attribute/{id}', [AttributeController::class, 'editAttribute'])->name('editAttribute');
-        Route::post('/update/attribute', [AttributeController::class, 'updateAttribute'])->name('updateAttribute');
-        Route::get('/delete/attribute/{id}', [AttributeController::class, 'deleteAttribute'])->name('deleteAttribute');
 
 
 
 
-        Route::get('/create/attribute/option/{id}', [AttributeOptionController::class, 'createAtributeOption'])->name('createAtributeOption');
-        Route::post('/attribute/option/store', [AttributeOptionController::class, 'storeAtributeOption'])->name('storeAtributeOption');
-        Route::get('/attribute/option/edit/{id}', [AttributeOptionController::class, 'attributeOptionEdit'])->name('attributeOptionEdit');
-        Route::post('/attribute/option/update', [AttributeOptionController::class, 'attributeOptionUpdate'])->name('attributeOptionUpdate');
-        Route::get('/attribute/option/delete/{id}', [AttributeOptionController::class, 'attributeOptionDelete'])->name('attributeOptionDelete');
 
 
-        //Report
-        Route::get('/report', [ReportController::class, 'report'])->name('report');
-        Route::get('/sale-report', [ReportController::class, 'saleReport'])->name('saleReport');
-
-        Route::get('/order-report-pdf', [ReportController::class, 'orderReportPdf'])->name('orderReportPdf');
 
 
-        Route::get('report-filter', [ReportController::class, 'reportFilter'])->name('reportFilter');
-        Route::get('sale-filter', [ReportController::class, 'saleFilter'])->name('saleFilter');
 
-        //Stock Inventory
-        Route::get('/stock', [InventoryController::class, 'stock'])->name('stock');
-        Route::get('/stock-out-product', [InventoryController::class, 'stockOutProduct'])->name('stockOutProducts');
-        Route::get('/upcoming-stock-out-product', [InventoryController::class, 'upcomingStockOut'])->name('upcomingStockOutProducts');
 
-        //Customer Info
-        Route::get('/customer-info', [CustomerInfoController::class, 'customerInfo'])->name('customerInfo');
 
-        //Api Setting
-        Route::get('/couriar-api', [Apicontroller::class, 'couriarApi'])->name('couriarApi');
-        Route::get('/send-steadfast/{id}', [ApiController::class, 'sendSteadfast'])->name('sendSteadfast');
-        Route::post('/api-store', [Apicontroller::class, 'apiStore'])->name('api.store');
 
-        //General Setting
-        Route::get('/general-setting', [GeneralController::class, 'generalSetting'])->name('generalSetting');
-        Route::post('/general-setting/store', [GeneralController::class, 'store'])->name('generalSetting.store');
-        Route::get('/media', [GeneralController::class, 'media'])->name('media');
-        Route::post('/upload-media', [GeneralController::class, 'uploadMedia'])->name('uploadMedia');
-        Route::get('/marketing', [GeneralController::class, 'marketing'])->name('marketing');
+
+
+
+
+
+
+
+
+
 
         //Profile Setting
         Route::get('/profile-setting', [ProfileController::class, 'profileSetting'])->name('profileSetting');
