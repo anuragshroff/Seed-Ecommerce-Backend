@@ -258,6 +258,15 @@ class PermissionSeeder extends Seeder
                 "updated_at" => "2019-10-05 23:58:06",
             ),
 
+            array(
+                "id" => 28,
+                "name" => "Order View",
+                "guard_name" => "web",
+                "group" => "Order",
+                "created_at" => "2019-10-05 23:58:06",
+                "updated_at" => "2019-10-05 23:58:06",
+            ),
+
 
 
 

@@ -2,10 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Product extends Model
 {
+
+    use HasFactory, Sluggable;
     //
     protected $fillable = [
         'name',
@@ -29,9 +34,20 @@ class Product extends Model
         'faq_section_title',
         'faq_questions',
         'faq_answers',
-        'review_images'
+        'review_images',
+        'slug'
 
     ];
+
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
 
     public function product_attribute_options()
     {

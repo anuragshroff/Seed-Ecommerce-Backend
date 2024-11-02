@@ -45,6 +45,8 @@ return new class extends Migration
 
             $table->string('review_images')->nullable();
 
+            $table->string('slug')->nullable();
+
             $table->timestamps();
             
             // Foreign key relation

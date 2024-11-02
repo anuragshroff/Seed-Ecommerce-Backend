@@ -36,22 +36,8 @@ Route::group(
     function () {
 
 
-
-
-
-
-        //pos
-        Route::resource('pos', PosController::class);
-        Route::get('/products/search', [PosController::class, 'search'])->name('products.search');
-        Route::post('/pos-order', [PosController::class, 'posOrder'])->name('posorders.store');
-
-
-
         //product
         //Route::resource('product', ProductController::class);
-
-        Route::delete('/product/{product}/review-image', [ProductController::class, 'deleteReviewImage'])->name('product.deleteReviewImage');
-
 
 
 
@@ -68,15 +54,21 @@ Route::group(
 
 
             //order
-            Route::get('/order', [OrderController::class, 'order'])->name('order');
-            Route::post('/orders/{id}/update-status', [OrderController::class, 'updateStatus'])->name('order.updateStatus');
-            Route::get('/order-filter', [OrderController::class, 'orderFilter'])->name('order.filter');
-            Route::get('/order-view/{id}', [OrderController::class, 'orderView'])->name('order.view');
-            Route::get('/order/print/{id}', [OrderController::class, 'print'])->name('order.print');
-            Route::get('/order/{id}/download-pdf', [OrderController::class, 'downloadPDF'])->name('order.downloadPDF');
-            Route::get('/order/{id}/delete', [OrderController::class, 'delete'])->name('order.delete');
-            Route::post('/orders/bulk-delete', [OrderController::class, 'bulkDelete'])->name('order.bulkDelete');
-            Route::get('/download-bulk-pdf', [OrderController::class, 'downloadBulkPdf'])->name('download.bulkpdf');
+            Route::get('/order', [OrderController::class, 'order'])->name('order')->middleware('permission:Order View');
+            Route::post('/orders/{id}/update-status', [OrderController::class, 'updateStatus'])->name('order.updateStatus')->middleware('permission:Order View');
+            Route::get('/order-filter', [OrderController::class, 'orderFilter'])->name('order.filter')->middleware('permission:Order View');
+            Route::get('/order-view/{id}', [OrderController::class, 'orderView'])->name('order.view')->middleware('permission:Order View');
+            Route::get('/order/print/{id}', [OrderController::class, 'print'])->name('order.print')->middleware('permission:Order View');
+            Route::get('/order/{id}/download-pdf', [OrderController::class, 'downloadPDF'])->name('order.downloadPDF')->middleware('permission:Order View');
+            Route::get('/order/{id}/delete', [OrderController::class, 'delete'])->name('order.delete')->middleware('permission:Order View');
+            Route::post('/orders/bulk-delete', [OrderController::class, 'bulkDelete'])->name('order.bulkDelete')->middleware('permission:Order View');
+            Route::get('/download-bulk-pdf', [OrderController::class, 'downloadBulkPdf'])->name('download.bulkpdf')->middleware('permission:Order View');
+
+
+            //pos
+            Route::resource('pos', PosController::class)->middleware('permission:Pos View');
+            Route::get('/products/search', [PosController::class, 'search'])->name('products.search')->middleware('permission:Pos View');
+            Route::post('/pos-order', [PosController::class, 'posOrder'])->name('posorders.store')->middleware('permission:Pos View');
 
 
 
@@ -109,8 +101,50 @@ Route::group(
                 ->name('product.destroy')
                 ->middleware('permission:Product Delete');
 
+
+            //Product status changed
+
+            Route::post('/product/toggle-status', [ProductController::class, 'toggleStatus'])->name('product.toggleStatus')->middleware('permission:Product View');
+
             //create product template
-            Route::get('create-product-template/{id}', [ProductController::class, 'createProductTemplate'])->name('createProductTemplate');
+            Route::get('create-product-template/{id}', [ProductController::class, 'createProductTemplate'])->name('createProductTemplate')->middleware('permission:Product Create');
+
+            //Delete Review Image
+
+            Route::delete('/product/{product}/review-image', [ProductController::class, 'deleteReviewImage'])->name('product.deleteReviewImage')->middleware('permission:Product Delete');
+
+
+            //Template
+            //Route::resource('template', TemplateController::class);
+
+            //Product  Permission-based access control for ProductController actions
+            Route::get('template', [TemplateController::class, 'index'])
+                ->name('template.index')
+                ->middleware('permission:Template View');
+
+            Route::get('template/create', [TemplateController::class, 'create'])
+                ->name('template.create')
+                ->middleware('permission:Template Create');
+
+            Route::post('template', [TemplateController::class, 'store'])
+                ->name('template.store')
+                ->middleware('permission:Template Create');
+
+            Route::get('template/{template}', [TemplateController::class, 'show'])
+                ->name('template.show')
+                ->middleware('permission:Template View');
+
+            Route::get('template/{template}/edit', [TemplateController::class, 'edit'])
+                ->name('template.edit')
+                ->middleware('permission:Template Edit');
+
+            Route::put('template/{template}', [TemplateController::class, 'update'])
+                ->name('template.update')
+                ->middleware('permission:Template Update');
+
+            Route::delete('template/{template}', [TemplateController::class, 'destroy'])
+                ->name('template.destroy')
+                ->middleware('permission:Template Delete');
 
 
 
@@ -118,19 +152,6 @@ Route::group(
             Route::resource('role-user', RollUserController::class)->middleware('permission:Administration');
             Route::resource('role-permission', RollPermissionController::class)->middleware('permission:Administration');
         });
-
-
-
-
-
-
-
-
-        Route::post('/product/toggle-status', [ProductController::class, 'toggleStatus'])->name('product.toggleStatus');
-
-
-        //Template
-        Route::resource('template', TemplateController::class);
 
 
         //Attribute
