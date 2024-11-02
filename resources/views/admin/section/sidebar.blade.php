@@ -123,7 +123,7 @@
             </ul>
         </li>
 
-        <li>
+        <li class="{{ setSidebarActive(['report', 'saleReport', 'orderReportPdf', 'reportFilter', 'saleFilter']) }}">
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><img src="{{ asset('assets/static/reports.webp') }}"
                         style="width: 30px; height: 30px" />
@@ -146,7 +146,7 @@
             </ul>
         </li>
 
-        <li>
+        <li class="{{ setSidebarActive(['stock', 'stockOutProducts', 'upcomingStockOutProducts']) }}">
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><img src="{{ asset('assets/static/inventory.webp') }}"
                         style="width: 30px; height: 30px" />
@@ -176,7 +176,7 @@
             </ul>
         </li>
 
-        <li>
+        <li class="{{ setSidebarActive(['customerInfo']) }}">
             <a href="{{ route('customerInfo') }}">
                 <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
                         style="width: 30px; height: 30px" />
@@ -186,7 +186,7 @@
 
         </li>
 
-        <li>
+        <li class="{{ setSidebarActive(['couriarApi']) }}">
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><img src="{{ asset('assets/static/delivery.webp') }}"
                         style="width: 30px; height: 30px" />
@@ -204,7 +204,7 @@
             </ul>
         </li>
 
-        <li>
+        <li class="{{ setSidebarActive(['marketing']) }}">
             <a href={{route('marketing')}}>
                 <div class="parent-icon"><img src="{{ asset('assets/static/marketing.webp') }}"
                         style="width: 30px; height: 30px" />
@@ -214,7 +214,7 @@
 
         </li>
 
-        <li>
+        <li class="{{ setSidebarActive(['generalSetting', 'media']) }}">
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><img src="{{ asset('assets/static/dashboard.webp') }}"
                         style="width: 30px; height: 30px" />

@@ -69,7 +69,7 @@ Route::group(
 
         Route::middleware(['auth:web'])->group(function () {
 
-            // Permission-based access control for ProductController actions
+            //Product  Permission-based access control for ProductController actions
             Route::get('product', [ProductController::class, 'index'])
                 ->name('product.index')
                 ->middleware('permission:Product View');
