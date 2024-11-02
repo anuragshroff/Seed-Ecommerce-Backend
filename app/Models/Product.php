@@ -44,7 +44,12 @@ class Product extends Model
     {
         return [
             'slug' => [
-                'source' => 'name'
+                'source' => 'name',
+
+                'method' => function ($string, $separator) {
+                    // Replace spaces with the separator and keep non-Latin characters
+                    return preg_replace('/\s+/u', $separator, trim($string));
+                }
             ]
         ];
     }
@@ -58,6 +63,4 @@ class Product extends Model
     {
         return $this->hasMany(OrderAttribute::class);
     }
-
-    
 }
