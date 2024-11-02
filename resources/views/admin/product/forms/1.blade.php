@@ -39,7 +39,7 @@
     <div class="col-md-6">
         <label for="countdowndate" class="form-label">Count Down Date / End of offer Date</label>
         <div class="input-group">
-            <input type="date" name="countdowndate" class="form-control" id="cuntdowndate">
+            <input type="datetime-local" name="countdowndate" class="form-control" id="cuntdowndate">
         </div>
         @error('cuntdowndate')
         <span class="text-danger">{{ $message }}</span>

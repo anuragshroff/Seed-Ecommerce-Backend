@@ -27,12 +27,23 @@ class ProductController extends Controller
 
 
 
-    public function api($product)
+    public function specificProduct($id)
     {
-        $product = Product::where('id',$product)->get();
+        $product = Product::where('id',$id)->get();
 
         return $product;
     }
+
+
+    public function allProduct()
+    {
+
+        $all_products = Product::latest()->get();
+      return  $all_products;
+
+    }
+
+
 
     public function index()
     {
@@ -61,7 +72,7 @@ class ProductController extends Controller
         $imagePaths = [];
         foreach (['featured_image', 'first_image', 'second_image', 'third_image', 'video'] as $image) {
             if ($request->hasFile($image)) {
-                $imagePaths[$image] = $this->uploadFile($request, $image);
+                $imagePaths[$image] = asset($this->uploadFile($request, $image));
             }
         }
 
@@ -69,7 +80,7 @@ class ProductController extends Controller
         $reviewImagePaths = [];
         if ($request->hasFile('review_images')) {
             foreach ($request->file('review_images') as $reviewImage) {
-                $reviewImagePaths[] = $this->uploadFile($request, $reviewImage);
+                $reviewImagePaths[] = asset($this->uploadFile($request, $reviewImage));
             }
         }
 
@@ -190,7 +201,7 @@ class ProductController extends Controller
                     $this->deleteOldFile($product->{$image});
                 }
                 // Upload the new file
-                $imagePaths[$image] = $this->uploadFile($request, $image);
+                $imagePaths[$image] = asset($this->uploadFile($request, $image));
             }
         }
 
