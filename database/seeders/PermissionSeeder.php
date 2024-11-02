@@ -215,7 +215,7 @@ class PermissionSeeder extends Seeder
 
             array(
                 "id" => 23,
-                "name" => "Customer",
+                "name" => "Customer View",
                 "guard_name" => "web",
                 "group" => "Customer",
                 "created_at" => "2019-10-05 23:58:06",
@@ -224,7 +224,7 @@ class PermissionSeeder extends Seeder
 
             array(
                 "id" => 24,
-                "name" => "Marketing",
+                "name" => "Marketing View",
                 "guard_name" => "web",
                 "group" => "Marketing",
                 "created_at" => "2019-10-05 23:58:06",

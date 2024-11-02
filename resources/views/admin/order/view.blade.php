@@ -35,8 +35,8 @@
                             <div class="col-12">
                                 <h5><b>Order Details :</b></h5>
 
-                                <span class="text-muted">Transaction Id :</span><br>
-                                <span class="text-muted">Order Id :</span>{{$order->invoice_no}}<br>
+                                <span class="text-muted">Transaction Id : {{$order->invoice_no}}</span><br>
+                                <span class="text-muted">Order Id :</span> {{$order->id}}<br>
                                 <span class="text-muted">Order Date :</span>{{$order->date}}<br>
                                 <span class="text-muted">Payment Status :Cash on Delivery</span>
                                 <div class="badge badge-danger">
@@ -77,7 +77,7 @@
                                 <!-- Table -->
                                 <div class="gd-responsive-table">
                                     <table class="table my-4">
-                                        <thead>
+                                        <thead style="border: none">
                                             <tr>
                                                 <th width="50%" class="px-0 bg-transparent border-top-0">
                                                     <span class="h6">Products</span>
@@ -101,43 +101,43 @@
                                                 <td class="px-0">
                                                     @foreach ($order->order_attributes as $item)
                                                     {{ $item->products['name'] }}
-                                                    <br>
+                                                    <hr>
                                                    @endforeach
                                                 </td>
                                                 <td class="px-0">
                                                     @foreach ($order->order_attributes as $item)
                                                     {{ $item->products['code'] }}
-                                                    <br>
+                                                    <hr>
                                                    @endforeach
                                                 </td>
                                                 <td class="px-0">
                                                     @foreach ($order->order_attributes as $item)
                                                     {{ $item->attributes?->name ?? 'N/A' }} - {{ $item->attributes_option?->name ?? 'N/A' }}<br>
-                                                    <br>
+                                                    <hr>
                                                    @endforeach
                                                 </td>
                                                 <td class="px-0">
                                                     @foreach ($order->order_attributes as $item)
                                                     {{ $item->quantity }}
-                                                    <br>
+                                                    <hr>
                                                    @endforeach
                                                 </td>
 
                                                 <td class="px-0 text-right">
                                                      @foreach ($order->order_attributes as $item)
                                                      ৳ {{ $item->products['price'] }}
-                                                     <br>
+                                                    <hr>
                                                      @endforeach
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td class="padding-top-2x" colspan="5">
-                                                </td>
-                                            </tr>
+                                           
                                             <tr>
                                                 <td class="px-0 border-top border-top-2">
                                                     <span class="text-muted">Shipping</span>
                                                 </td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
                                                 <td class="px-0 text-right border-top border-top-2" colspan="5">
                                                     <span>
                                                         ৳{{$order->area}}
@@ -150,8 +150,11 @@
 
                                                     <strong>Total amount</strong>
                                                 </td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
                                                 <td class="px-0 text-right border-top border-top-2" colspan="5">
-                                                    <span class="h3">
+                                                    <span class="h5">
                                                         ৳ {{$order->amount}}
                                                     </span>
                                                 </td>
