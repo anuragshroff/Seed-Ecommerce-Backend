@@ -14,6 +14,15 @@ use setasign\Fpdi\PdfParser\StreamReader;
 
 class OrderController extends Controller
 {
+
+    public function placeorder(Request $request)
+    {
+
+        return $request->all();
+
+    }
+
+
     public function order()
     {
         $orders = Order::latest()->with('order_attributes.products')->get();
