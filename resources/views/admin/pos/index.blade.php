@@ -176,7 +176,7 @@
                                     data-attributes='{{ json_encode($product->product_attribute_options) }}'
                                     data-image="{{ asset($product->featured_image) }}" class="product-image" />
                                 <!-- Add class for targeting in jQuery -->
-                                <p>{{ $product->name }}</p>
+                                <p class="mt-2">{{ $product->name }}</p>
                             </div>
                             @endforeach
                         </div>

@@ -19,7 +19,19 @@ class PosController extends Controller
      */
     public function index()
     {
-        $products = Product::where('quantity', '>', 0)->with('product_attribute_options.attributes', 'product_attribute_options.attributes_option')->get()->random(6);
+        //$products = Product::where('quantity', '>', 0)->with('product_attribute_options.attributes', 'product_attribute_options.attributes_option')->get()->random(6);
+
+        $products = Product::where('quantity', '>', 0)
+            ->with('product_attribute_options.attributes', 'product_attribute_options.attributes_option')
+            ->get()
+            ->when(function ($collection) {
+                return $collection->count() >= 6; // Only try to get 6 if 6 or more products are available
+            }, function ($collection) {
+                return $collection->random(6); // Get 6 random items
+            }, function ($collection) {
+                return $collection->random($collection->count()); // Get all items if less than 6 are available
+            });
+
 
         return view('admin.pos.index', compact('products'));
     }
