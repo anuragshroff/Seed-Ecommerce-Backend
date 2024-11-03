@@ -26,7 +26,7 @@ class ProductController extends Controller
 
     public function specificProduct($id)
     {
-        $product = Product::where('id',$id)->get();
+        $product = Product::where('id', $id)->get();
 
         return $product;
     }
@@ -36,15 +36,13 @@ class ProductController extends Controller
     {
 
         $all_products = Product::latest()->get();
-      return  $all_products;
-
+        return  $all_products;
     }
     public function setting()
     {
-        $setting=Setting::first();
+        $setting = Setting::first();
 
-      return  $setting;
-
+        return  $setting;
     }
 
 
@@ -73,8 +71,8 @@ class ProductController extends Controller
     {
         //dd($request->all());
         $validatedData = $request->validated();
-      
-        
+
+
 
         $imagePaths = [];
         foreach (['featured_image', 'first_image', 'second_image', 'third_image', 'video'] as $image) {
