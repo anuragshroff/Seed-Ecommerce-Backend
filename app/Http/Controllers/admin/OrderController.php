@@ -15,13 +15,7 @@ use setasign\Fpdi\PdfParser\StreamReader;
 class OrderController extends Controller
 {
 
-    public function placeorder(Request $request)
-    {
-
-        return $request->all();
-
-    }
-
+   
 
     public function order()
     {

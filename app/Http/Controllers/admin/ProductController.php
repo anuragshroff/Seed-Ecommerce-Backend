@@ -24,27 +24,7 @@ class ProductController extends Controller
     use FileUploadTrait;
 
 
-    public function specificProduct($id)
-    {
-        $product = Product::where('id', $id)->get();
-
-        return $product;
-    }
-
-
-    public function allProduct()
-    {
-
-        $all_products = Product::latest()->get();
-        return  $all_products;
-    }
-    public function setting()
-    {
-        $setting = Setting::first();
-
-        return  $setting;
-    }
-
+   
 
 
     public function index()
