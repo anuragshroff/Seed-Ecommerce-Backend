@@ -16,3 +16,4 @@ Route::get('/products/setting/', [ApiProductController::class, 'setting']);
 
 
 Route::post('/api-orders', [ApiOrderController::class, 'placeOrder']);
+Route::get('/product/{slug}', [ApiProductController::class, 'specificProduct']);

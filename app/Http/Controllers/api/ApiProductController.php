@@ -11,11 +11,37 @@ class ApiProductController extends Controller
 {
     //
 
-    public function specificProduct($id)
+    public function specificProduct($slug)
     {
-        $product = Product::where('id', $id)->get();
+       
 
-        return $product;
+        try {
+            // Validate the incoming ID
+            if (!is_string($slug) || empty($slug)) {
+                return response()->json([
+                    'error' => 'Invalid product ID provided.'
+                ], 400);
+            }
+
+            // Retrieve the product
+            $product = Product::where('slug', $slug)->first();
+
+            // Ensure the product was found
+            if (!$product) {
+                return response()->json([
+                    'error' => 'Product not found.'
+                ], 404);
+            }
+
+            // Return the product data as JSON
+            return response()->json($product);
+        } catch (\Exception $error) {
+            // Log the error and return a generic error message
+            dd($error->getMessage());
+            return response()->json([
+                'error' => 'An error occurred while retrieving the product.'
+            ], 500);
+        }
     }
 
 
