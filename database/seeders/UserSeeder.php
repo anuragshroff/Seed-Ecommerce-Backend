@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
 
-        User::insert([
+        $users = [
             [
                 'name' => 'John Doe',
                 'email' => 'john@example.com',
@@ -157,7 +157,16 @@ class UserSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ]
-        ]);
+        ];
+
+        foreach ($users as $userData) {
+            $user = User::create($userData);
+            if ($userData['role'] === 'admin') {
+                $user->assignRole('Super Admin');
+            } else {
+                $user->assignRole('User');
+            }
+        }
 
     }
 }

@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Schema;
 use App\Models\ApiSetting;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,11 +28,13 @@ class AppServiceProvider extends ServiceProvider
             return $user->hasRole('Super Admin') ? true : null;
         });
 
-        $apiSetting = ApiSetting::first();
+        if (Schema::hasTable('api_settings')) {
+            $apiSetting = ApiSetting::first();
 
-        if ($apiSetting) {
-            Config::set('steadfast-courier.api_key', $apiSetting->steadfast_client_id);
-            Config::set('steadfast-courier.secret_key', $apiSetting->steadfast_client_secret);
+            if ($apiSetting) {
+                Config::set('steadfast-courier.api_key', $apiSetting->steadfast_client_id);
+                Config::set('steadfast-courier.secret_key', $apiSetting->steadfast_client_secret);
+            }
         }
 
 

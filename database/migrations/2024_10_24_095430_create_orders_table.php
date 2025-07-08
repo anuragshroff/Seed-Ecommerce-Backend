@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('date');
             $table->decimal('amount', 10, 2);
             $table->enum('payment_status', ['Paid', 'Unpaid'])->default('Unpaid');
-            $table->enum('status', ['Pending', 'Processing', 'Delivered', 'Cancelled', 'Pending Delivery', 'Returned', 'Confirmed', 'Processing', 'Pick Up', 'On The Way'])->default('Pending');
+            $table->enum('status', ['Pending', 'Processing', 'Delivered', 'Cancelled', 'Pending Delivery', 'Returned', 'Confirmed', 'Pick Up', 'On The Way'])->default('Pending');
             $table->string('name')->null();
             $table->string('address')->null();
             $table->string('mobile')->null();
