@@ -30,11 +30,7 @@ class AppServiceProvider extends ServiceProvider
 
         if (Schema::hasTable('api_settings')) {
             $apiSetting = ApiSetting::first();
-
-            if ($apiSetting) {
-                Config::set('steadfast-courier.api_key', $apiSetting->steadfast_client_id);
-                Config::set('steadfast-courier.secret_key', $apiSetting->steadfast_client_secret);
-            }
+            // API settings loaded - can be used for other integrations
         }
 
 

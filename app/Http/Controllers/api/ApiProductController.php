@@ -9,52 +9,73 @@ use Illuminate\Http\Request;
 
 class ApiProductController extends Controller
 {
-    //
-
-    public function specificProduct($slug)
+    public function index(Request $request)
     {
-       
-
-        try {
-            // Validate the incoming ID
-            if (!is_string($slug) || empty($slug)) {
-                return response()->json([
-                    'error' => 'Invalid product ID provided.'
-                ], 400);
-            }
-
-            // Retrieve the product
-            $product = Product::where('slug', $slug)->first();
-
-            // Ensure the product was found
-            if (!$product) {
-                return response()->json([
-                    'error' => 'Product not found.'
-                ], 404);
-            }
-
-            // Return the product data as JSON
-            return response()->json($product);
-        } catch (\Exception $error) {
-            // Log the error and return a generic error message
-            dd($error->getMessage());
-            return response()->json([
-                'error' => 'An error occurred while retrieving the product.'
-            ], 500);
-        }
+        $products = Product::with('attributeOptions')
+            ->when($request->category_id, fn($q) => $q->where('category_id', $request->category_id))
+            ->when($request->search, fn($q) => $q->where('name', 'like', '%' . $request->search . '%'))
+            ->paginate(20);
+        
+        return response()->json($products);
     }
 
+    public function show($id)
+    {
+        $product = Product::with('attributeOptions')->findOrFail($id);
+        return response()->json($product);
+    }
+
+    public function showBySlug($slug)
+    {
+        $product = Product::with('attributeOptions')->where('slug', $slug)->firstOrFail();
+        return response()->json($product);
+    }
+
+    public function featured()
+    {
+        $products = Product::with('attributeOptions')->where('is_featured', true)->paginate(20);
+        return response()->json($products);
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->get('q');
+        $products = Product::with('attributeOptions')
+            ->where('name', 'like', '%' . $query . '%')
+            ->orWhere('description', 'like', '%' . $query . '%')
+            ->paginate(20);
+        
+        return response()->json($products);
+    }
+
+    public function byCategory($categoryId)
+    {
+        $products = Product::with('attributeOptions')
+            ->where('category_id', $categoryId)
+            ->paginate(20);
+        
+        return response()->json($products);
+    }
+
+    public function settings()
+    {
+        $settings = Setting::first();
+        return response()->json($settings);
+    }
+
+    // Legacy methods
+    public function specificProduct($slug)
+    {
+        return $this->showBySlug($slug);
+    }
 
     public function allProduct()
     {
-
-        $all_products = Product::latest()->get();
-        return  $all_products;
+        return $this->index(request());
     }
+
     public function setting()
     {
-        $setting = Setting::first();
-
-        return  $setting;
+        return $this->settings();
     }
 }

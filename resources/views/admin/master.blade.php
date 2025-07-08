@@ -2,7 +2,6 @@
 <html lang="en" class="light-theme">
 
 
-<!-- Mirrored from codervent.com/rukada/demo/vertical/ltr/index2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Oct 2024 09:34:18 GMT -->
 
 <head>
     <!-- Required meta tags -->
