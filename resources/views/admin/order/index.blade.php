@@ -351,7 +351,7 @@
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 
                                             <li>
-                                                <a href="{{route('sendSteadfast', $item->id)}}" style="margin-left: 15px; color: #3d4e6a">Sent To SteadFast</a>
+                                                <a href="{{route('sendSteadfast', $item->id)}}" style="margin-left: 15px; color: #3d4e6a">Send To Courier</a>
                                                 
                                             </li>
 

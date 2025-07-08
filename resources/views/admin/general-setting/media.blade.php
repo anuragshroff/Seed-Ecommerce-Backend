@@ -16,10 +16,6 @@
                     </div>
 
 
-
-
-
-
                     <div class="card-body">
                         <form  action="{{route('uploadMedia')}}" method="POST"
                             enctype="multipart/form-data">

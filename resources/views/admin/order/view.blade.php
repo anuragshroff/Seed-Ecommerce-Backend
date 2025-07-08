@@ -64,7 +64,7 @@
 
                                 <span class="text-muted">Address: </span>{{$order->address}}<br>
 
-                                <span class="text-muted">Billing Area: </span>ঢাকার ভেতরে<br>
+                                <span class="text-muted">Billing Area: </span>Inside Dhaka<br>
 
 
 
@@ -125,7 +125,7 @@
 
                                                 <td class="px-0 text-right">
                                                      @foreach ($order->order_attributes as $item)
-                                                     ৳ {{ $item->products['price'] }}
+                                                     ৳{{ $item->products['price'] }}
                                                     <hr>
                                                      @endforeach
                                                 </td>
@@ -155,7 +155,7 @@
                                                 <td></td>
                                                 <td class="px-0 text-right border-top border-top-2" colspan="5">
                                                     <span class="h5">
-                                                        ৳ {{$order->amount}}
+                                                        ৳{{$order->amount}}
                                                     </span>
                                                 </td>
                                             </tr>

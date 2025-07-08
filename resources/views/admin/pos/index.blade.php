@@ -44,20 +44,20 @@
 
                         <p style="font-size: 19px">Customer Information</p>
                         <div class="col-md-12 mt-3">
-                            <label for="name" class="form-label">আপনার নাম</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="আপনার নাম">
+                            <label for="name" class="form-label">Costumer Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Costumer Name">
                         </div>
 
                         <div class="col-md-12 mt-3">
-                            <label for="address" class="form-label">আপনার ঠিকানা</label>
+                            <label for="address" class="form-label">Costumer Address</label>
                             <input type="text" class="form-control" id="address" name="address"
-                                placeholder="আপনার ঠিকানা">
+                                placeholder="Costumer Address">
                         </div>
 
                         <div class="col-md-12 mt-3">
-                            <label for="mobile" class="form-label">আপনার মোবাইল</label>
+                            <label for="mobile" class="form-label">Costumer Mobile</label>
                             <input type="text" class="form-control" id="mobile" name="mobile"
-                                placeholder="আপনার মোবাইল">
+                                placeholder="Your Mobile">
                         </div>
 
                         <div class="col-md-12 mt-3">
@@ -88,7 +88,6 @@
                                     {{ getGeneralSetting()->delivery_charge_inside }} </option>
                                 <option value="{{ getGeneralSetting()->delivery_charge_outside }}">Outside Dhaka {{
                                     getGeneralSetting()->delivery_charge_outside }}</option>
-
                             </select>
                         </div>
 
